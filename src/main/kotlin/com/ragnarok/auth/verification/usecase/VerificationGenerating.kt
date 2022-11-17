@@ -1,0 +1,68 @@
+package com.ragnarok.auth.verification.usecase
+
+import com.ragnarok.auth.member.domain.repository.MemberRepository
+import com.ragnarok.auth.member.exception.AlreadyRegisteredMemberException
+import com.ragnarok.auth.member.exception.NoMemberFoundException
+import com.ragnarok.auth.verification.domain.entity.Verification
+import com.ragnarok.auth.verification.domain.repository.VerificationRepository
+import com.ragnarok.auth.verification.domain.value.VerificationType
+import com.ragnarok.auth.verification.exception.ActiveVerificationExistException
+import com.ragnarok.auth.verification.usecase.value.TimeLimit
+import java.time.LocalDateTime
+import kotlin.random.Random
+
+class JoinVerificationGenerating(
+    private val request: VerificationRequest,
+    private val verificationRepository: VerificationRepository,
+    private val memberRepository: MemberRepository,
+) {
+    fun execute() {
+        memberRepository.findByPhoneNumber(request.phoneNumber)
+            ?.let { throw AlreadyRegisteredMemberException() }
+
+        verificationRepository.findByPhoneNumberAndType(request.phoneNumber, VerificationType.JOIN)
+            ?.let { if (it.codeExpiredTime.isAfter(LocalDateTime.now())) throw ActiveVerificationExistException() }
+
+        val verification = Verification(
+            null,
+            request.phoneNumber,
+            randomCode(),
+            LocalDateTime.now().plusMinutes(TimeLimit.CODE_EXPIRED),
+            VerificationType.JOIN
+        )
+
+        verificationRepository.save(verification)
+    }
+}
+
+class ResetVerificationGenerating(
+    private val request: VerificationRequest,
+    private val verificationRepository: VerificationRepository,
+    private val memberRepository: MemberRepository,
+) {
+    fun execute() {
+        memberRepository.findByPhoneNumber(request.phoneNumber)
+            ?: throw NoMemberFoundException()
+
+        verificationRepository.findByPhoneNumberAndType(request.phoneNumber, VerificationType.RESET)
+            ?.let { if (it.codeExpiredTime.isAfter(LocalDateTime.now())) throw ActiveVerificationExistException() }
+
+        val verification = Verification(
+            null,
+            request.phoneNumber,
+            randomCode(),
+            LocalDateTime.now().plusMinutes(TimeLimit.CODE_EXPIRED),
+            VerificationType.RESET
+        )
+
+        verificationRepository.save(verification)
+    }
+}
+
+class VerificationRequest(val phoneNumber: String)
+
+fun randomCode(): String {
+    return List(6) { Random.nextInt(0, 9) }.toString()
+}
+
+
