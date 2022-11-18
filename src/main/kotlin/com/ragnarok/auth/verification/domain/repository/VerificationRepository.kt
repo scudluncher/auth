@@ -16,5 +16,4 @@ class FakeVerificationRepository : VerificationRepository {
     override fun findByPhoneNumberAndType(phoneNumber: String, type: VerificationType): Verification? {
         TODO("Not yet implemented")
     }
-
 }

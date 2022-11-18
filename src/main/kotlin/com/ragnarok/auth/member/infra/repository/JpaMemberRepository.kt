@@ -4,6 +4,7 @@ import com.ragnarok.auth.member.domain.entity.Member
 import com.ragnarok.auth.member.domain.repository.MemberRepository
 import com.ragnarok.auth.member.infra.entity.MemberJpaEntity
 import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Component
 import org.springframework.stereotype.Repository
 
@@ -27,6 +28,11 @@ class JpaMemberRepository(private val crudRepository: JpaMemberCrudRepository) :
     override fun save(member: Member): Member {
         return crudRepository.save(MemberJpaEntity(member))
             .toDomainEntity()
+    }
+
+    override fun findById(id: Long): Member? {
+        return crudRepository.findByIdOrNull(id)
+            ?.toDomainEntity()
     }
 }
 

@@ -7,6 +7,7 @@ interface MemberRepository {
     fun findByNickName(nickName: String): Member?
     fun findByEmail(email: String): Member?
     fun save(member: Member): Member
+    fun findById(id: Long): Member?
 }
 
 class FakeMemberRepository : MemberRepository {
@@ -23,6 +24,10 @@ class FakeMemberRepository : MemberRepository {
     }
 
     override fun save(member: Member): Member {
+        TODO("Not yet implemented")
+    }
+
+    override fun findById(id: Long): Member? {
         TODO("Not yet implemented")
     }
 }

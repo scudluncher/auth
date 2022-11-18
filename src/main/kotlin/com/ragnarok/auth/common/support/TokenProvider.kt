@@ -7,4 +7,5 @@ interface TokenProvider {
 
 class TokenPayload(
     val id: Long,
+    val nickName: String,
 )

@@ -72,7 +72,8 @@ class GeneratingResetVerification(
 class VerificationRequest(val phoneNumber: String)
 
 fun randomCode(): String {
-    return List(6) { Random.nextInt(0, 9) }.toString()
+    return List(6) { Random.nextInt(0, 9) }
+        .joinToString(separator = "")
 }
 
 

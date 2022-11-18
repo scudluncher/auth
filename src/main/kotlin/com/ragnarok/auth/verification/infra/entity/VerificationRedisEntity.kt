@@ -13,15 +13,18 @@ import javax.persistence.Enumerated
 @RedisHash(value = "verification", timeToLive = 60 * 15)
 class VerificationRedisEntity(
     @Id
+    @Indexed
     var id: Long?,
 
     @Indexed
     var phoneNumber: String,
 
+    @Indexed
     var code: String,
 
     var codeExpiredTime: LocalDateTime,
 
+    @Indexed
     @Enumerated(EnumType.STRING)
     var type: VerificationType,
 

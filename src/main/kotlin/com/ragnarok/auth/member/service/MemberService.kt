@@ -5,6 +5,7 @@ import com.ragnarok.auth.member.domain.entity.Member
 import com.ragnarok.auth.member.domain.repository.MemberRepository
 import com.ragnarok.auth.member.usecase.JoinRequest
 import com.ragnarok.auth.member.usecase.MemberJoining
+import com.ragnarok.auth.member.usecase.ShowingMe
 import org.springframework.stereotype.Service
 
 @Service
@@ -21,7 +22,17 @@ class MemberService(
             .execute()
     }
 
-    fun me(): Member {
+    fun me(id: Long): Member {
+        return ShowingMe(
+            memberRepository,
+            id
+        )
+            .retrieve()
+    }
+
+    fun resetPassword() {
         TODO()
     }
+
+
 }

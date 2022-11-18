@@ -5,7 +5,7 @@ import javax.validation.constraints.NotBlank
 
 class VerificationRequest(
     @field:NotBlank
-    private val phoneNumber: String,
+    val phoneNumber: String,
 ) {
     fun toGenerateRequest(): VerificationRequest {
         return VerificationRequest(phoneNumber)
