@@ -8,7 +8,7 @@ import java.time.LocalDateTime
 interface VerificationRepository {
     fun save(verification: Verification): Verification
     fun findByPhoneNumberAndType(phoneNumber: String, type: VerificationType): Verification?
-    fun delete(id:Long)
+    fun delete(id: Long)
 }
 
 class FakeVerificationRepository : VerificationRepository {
@@ -35,7 +35,8 @@ class FakeVerificationRepository : VerificationRepository {
     }
 
     override fun findByPhoneNumberAndType(phoneNumber: String, type: VerificationType): Verification? {
-        return verifications.firstOrNull { it.phoneNumber == phoneNumber && it.type == type }
+        return verifications.sortedByDescending { it.codeExpiredTime }
+            .firstOrNull { it.phoneNumber == phoneNumber && it.type == type }
     }
 
     override fun delete(id: Long) {
