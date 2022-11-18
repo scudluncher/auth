@@ -1,0 +1,17 @@
+###
+POST http://localhost:8080/v1/verification/join
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629"
+}
+
+###
+PATCH http://localhost:8080/v1/verification
+Content-Type: application/json
+
+{
+"phoneNumber": "01089764629",
+"code" : "687428",
+"verificationType" : "JOIN"
+}

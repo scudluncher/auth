@@ -24,7 +24,7 @@ class GeneratingJoinVerification(
             ?.let { throw AlreadyRegisteredMemberException() }
 
         verificationRepository.findByPhoneNumberAndType(request.phoneNumber, VerificationType.JOIN)
-            ?.let { if (it.codeExpiredTime.isAfter(LocalDateTime.now())) throw ActiveVerificationExistException() }
+            ?.checkVerifiable()
 
         val verification = Verification(
             null,
@@ -51,7 +51,7 @@ class GeneratingResetVerification(
             ?: throw NoMemberFoundException()
 
         verificationRepository.findByPhoneNumberAndType(request.phoneNumber, VerificationType.RESET)
-            ?.let { if (it.codeExpiredTime.isAfter(LocalDateTime.now())) throw ActiveVerificationExistException() }
+            ?.checkVerifiable()
 
         val verification = Verification(
             null,
@@ -74,6 +74,10 @@ class VerificationRequest(val phoneNumber: String)
 fun randomCode(): String {
     return List(6) { Random.nextInt(0, 9) }
         .joinToString(separator = "")
+}
+
+fun VerificationRepository.checkVerifiable(phoneNumber: String, type:VerificationType) {
+
 }
 
 

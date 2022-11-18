@@ -45,7 +45,7 @@ class MemberJoining(
                 throw AlreadyUsedNickNameException()
             }
 
-        memberRepository.findByEmail(request.email)
+        memberRepository.findByEmail(Email(request.email))
             ?.let {
                 throw AlreadyUsedEmailException()
             }

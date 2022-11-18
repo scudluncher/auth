@@ -2,6 +2,7 @@ package com.ragnarok.auth.member.infra.repository
 
 import com.ragnarok.auth.member.domain.entity.Member
 import com.ragnarok.auth.member.domain.repository.MemberRepository
+import com.ragnarok.auth.member.domain.value.Email
 import com.ragnarok.auth.member.infra.entity.MemberJpaEntity
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.repository.findByIdOrNull
@@ -20,8 +21,8 @@ class JpaMemberRepository(private val crudRepository: JpaMemberCrudRepository) :
             ?.toDomainEntity()
     }
 
-    override fun findByEmail(email: String): Member? {
-        return crudRepository.findByEmailAddress(email)
+    override fun findByEmail(email: Email): Member? {
+        return crudRepository.findByEmailAddress(email.address)
             ?.toDomainEntity()
     }
 

@@ -1,6 +1,8 @@
 package com.ragnarok.auth.verification.domain.entity
 
 import com.ragnarok.auth.verification.domain.value.VerificationType
+import com.ragnarok.auth.verification.exception.ActiveVerificationExistException
+import com.ragnarok.auth.verification.exception.AlreadyVerifiedException
 import com.ragnarok.auth.verification.usecase.value.TimeLimit
 import java.time.LocalDateTime
 
@@ -36,5 +38,12 @@ class Verification(
             verified = true,
             verificationExpiredTime = LocalDateTime.now().plusMinutes(TimeLimit.VERIFICATION_EXPIRED)
         )
+    }
+
+    fun checkVerifiable() {
+        let {
+            if (!it.verified && it.codeExpiredTime.isAfter(LocalDateTime.now())) throw ActiveVerificationExistException()
+            if (it.verified && it.verificationExpiredTime != null) throw AlreadyVerifiedException(it.verificationExpiredTime)
+        }
     }
 }

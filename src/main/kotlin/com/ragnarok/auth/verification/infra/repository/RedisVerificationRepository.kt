@@ -17,12 +17,16 @@ class RedisVerificationRepository(private val crudRepository: RedisVerificationC
     }
 
     override fun findByPhoneNumberAndType(phoneNumber: String, type: VerificationType): Verification? {
-        return crudRepository.findByPhoneNumberAndType(phoneNumber, type)
+        return crudRepository.findFirstByPhoneNumberAndTypeOrderByCodeExpiredTimeDesc(phoneNumber, type)
             ?.toDomainEntity()
+    }
+
+    override fun delete(id: Long) {
+        crudRepository.deleteById(id)
     }
 }
 
 @Component
 interface RedisVerificationCrudRepository : CrudRepository<VerificationRedisEntity, Long> {
-    fun findByPhoneNumberAndType(phoneNumber: String, type: VerificationType): VerificationRedisEntity?
+    fun findFirstByPhoneNumberAndTypeOrderByCodeExpiredTimeDesc(phoneNumber: String, type: VerificationType) : VerificationRedisEntity?
 }
