@@ -1,5 +1,6 @@
 package com.ragnarok.auth.verification.infra.entity
 
+import com.ragnarok.auth.common.infra.InfraEntity
 import com.ragnarok.auth.verification.domain.entity.Verification
 import com.ragnarok.auth.verification.domain.value.VerificationType
 import org.springframework.data.annotation.Id
@@ -27,7 +28,7 @@ class VerificationRedisEntity(
     var verificationExpiredTime: LocalDateTime?,
 
     var verified: Boolean,
-) {
+) : InfraEntity<Verification> {
     constructor(verification: Verification) : this(
         verification.id,
         verification.phoneNumber,
@@ -38,7 +39,7 @@ class VerificationRedisEntity(
         verification.verified
     )
 
-    fun toDomainEntity(): Verification {
+    override fun toDomainEntity(): Verification {
         return Verification(
             id,
             phoneNumber,
@@ -48,5 +49,9 @@ class VerificationRedisEntity(
             verificationExpiredTime,
             verified
         )
+    }
+
+    override fun update(domainEntity: Verification) {
+        verified = domainEntity.verified
     }
 }

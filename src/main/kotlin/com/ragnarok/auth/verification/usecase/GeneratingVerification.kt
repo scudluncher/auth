@@ -1,5 +1,7 @@
 package com.ragnarok.auth.verification.usecase
 
+import com.ragnarok.auth.common.support.ExternalMessageSender
+import com.ragnarok.auth.common.value.SmsMessage
 import com.ragnarok.auth.member.domain.repository.MemberRepository
 import com.ragnarok.auth.member.exception.AlreadyRegisteredMemberException
 import com.ragnarok.auth.member.exception.NoMemberFoundException
@@ -11,10 +13,11 @@ import com.ragnarok.auth.verification.usecase.value.TimeLimit
 import java.time.LocalDateTime
 import kotlin.random.Random
 
-class JoinVerificationGenerating(
+class GeneratingJoinVerification(
     private val request: VerificationRequest,
     private val verificationRepository: VerificationRepository,
     private val memberRepository: MemberRepository,
+    private val messageSender: ExternalMessageSender,
 ) {
     fun execute() {
         memberRepository.findByPhoneNumber(request.phoneNumber)
@@ -32,13 +35,16 @@ class JoinVerificationGenerating(
         )
 
         verificationRepository.save(verification)
+
+        messageSender.sendMessage(SmsMessage(verification.phoneNumber, verification.code))
     }
 }
 
-class ResetVerificationGenerating(
+class GeneratingResetVerification(
     private val request: VerificationRequest,
     private val verificationRepository: VerificationRepository,
     private val memberRepository: MemberRepository,
+    private val messageSender: ExternalMessageSender,
 ) {
     fun execute() {
         memberRepository.findByPhoneNumber(request.phoneNumber)
@@ -56,6 +62,10 @@ class ResetVerificationGenerating(
         )
 
         verificationRepository.save(verification)
+
+        messageSender.sendMessage(
+            SmsMessage(verification.phoneNumber, verification.code)
+        )
     }
 }
 

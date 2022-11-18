@@ -1,6 +1,7 @@
 package com.ragnarok.auth.verification.controller
 
 import com.ragnarok.auth.common.response.EmptyContent
+import com.ragnarok.auth.verification.request.VerificationConfirmRequest
 import com.ragnarok.auth.verification.request.VerificationRequest
 import com.ragnarok.auth.verification.service.VerificationService
 import org.springframework.http.HttpStatus
@@ -15,13 +16,15 @@ class VerificationController(private val verificationService: VerificationServic
 
     @PostMapping("/join-verification")
     fun generateVerification(@Valid request: VerificationRequest): ResponseEntity<EmptyContent> {
-        verificationService.generateVerification(request.toGenerateRequest())
+        verificationService.generateJoinVerification(request.toGenerateRequest())
 
         return ResponseEntity<EmptyContent>(HttpStatus.CREATED)
     }
 
     @PatchMapping("/verification")
-    fun confirmingVerification() {
-        TODO("yessss")
+    fun confirmingVerification(@Valid request:VerificationConfirmRequest): ResponseEntity<EmptyContent> {
+        verificationService.confirmVerification(request.toConfirmRequest())
+
+        return ResponseEntity<EmptyContent>(HttpStatus.OK)
     }
 }

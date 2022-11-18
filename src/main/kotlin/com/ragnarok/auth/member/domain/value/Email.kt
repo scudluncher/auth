@@ -1,3 +1,3 @@
 package com.ragnarok.auth.member.domain.value
 
-class Email(emailAddress: String)
+class Email(val address: String)
