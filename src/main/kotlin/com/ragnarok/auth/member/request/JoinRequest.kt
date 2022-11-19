@@ -7,23 +7,23 @@ import javax.validation.constraints.Size
 
 class JoinRequest(
     @field:NotBlank
-    @field:Size(max=50)
+    @field:Size(max = 50)
     @field:Email
     private val email: String,
 
-    //todo password validator
+    @field:Size(min = 3, max = 15)
     private val password: String,
 
     @field:NotBlank
-    @field:Size(max=30)
+    @field:Size(max = 30)
     private val name: String,
 
     @field:NotBlank
-    @field:Size(max=30)
+    @field:Size(max = 30)
     private val nickName: String,
 
     @field:NotBlank
-    @field:Size(max=15)
+    @field:Size(max = 15)
     private val phoneNumber: String,
 ) {
     fun toJoinRequest(): JoinRequest {

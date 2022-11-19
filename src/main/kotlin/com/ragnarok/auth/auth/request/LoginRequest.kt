@@ -4,6 +4,7 @@ import com.ragnarok.auth.auth.exception.NotEnoughIdentificationProvidedException
 import com.ragnarok.auth.auth.usecase.MemberLoginRequest
 import com.ragnarok.auth.member.domain.value.Email
 import javax.validation.constraints.NotBlank
+import javax.validation.constraints.Size
 
 class LoginRequest(
     private val id: Long?,
@@ -11,6 +12,7 @@ class LoginRequest(
     private val nickName: String?,
     private val email: String?,
     @field:NotBlank
+    @field:Size(min = 3, max = 15)
     private val password: String,
 ) {
     fun toMemberLoginRequest(): MemberLoginRequest {

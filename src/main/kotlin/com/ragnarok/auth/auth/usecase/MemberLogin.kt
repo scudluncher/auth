@@ -45,7 +45,7 @@ class MemberLogin(
 
         val requestedPasswordHashed = hashingProvider.hash(request.password, salt)
 
-        if(!currentPassword.checkEquality(requestedPasswordHashed)) {
+        if (!currentPassword.checkEquality(requestedPasswordHashed)) {
             throw AuthenticationFailException()
         }
 

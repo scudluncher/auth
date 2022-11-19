@@ -1,7 +1,5 @@
 package com.ragnarok.auth.common.support
 
-import kotlin.random.Random
-
 interface HashingProvider {
     fun salt(): String
     fun hash(password: String, salt: String): String

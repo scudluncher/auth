@@ -1,3 +1,3 @@
 package com.ragnarok.auth.verification.exception
 
-class OngoingVerificationException:RuntimeException()
+class OngoingVerificationException : RuntimeException()

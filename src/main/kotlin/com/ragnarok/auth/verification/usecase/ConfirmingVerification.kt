@@ -3,8 +3,8 @@ package com.ragnarok.auth.verification.usecase
 import com.ragnarok.auth.verification.domain.repository.VerificationRepository
 import com.ragnarok.auth.verification.domain.value.VerificationType
 import com.ragnarok.auth.verification.exception.CodeExpiredException
-import com.ragnarok.auth.verification.exception.NotExistingVerification
 import com.ragnarok.auth.verification.exception.CodeNotMatchedException
+import com.ragnarok.auth.verification.exception.NotExistingVerification
 import java.time.LocalDateTime
 
 class ConfirmingVerification(

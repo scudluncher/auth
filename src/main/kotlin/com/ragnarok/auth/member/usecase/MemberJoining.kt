@@ -5,7 +5,6 @@ import com.ragnarok.auth.member.domain.entity.Member
 import com.ragnarok.auth.member.domain.repository.MemberRepository
 import com.ragnarok.auth.member.domain.value.Email
 import com.ragnarok.auth.member.domain.value.HashedPassword
-import com.ragnarok.auth.member.exception.AlreadyRegisteredMemberException
 import com.ragnarok.auth.member.exception.AlreadyUsedEmailException
 import com.ragnarok.auth.member.exception.AlreadyUsedNickNameException
 import com.ragnarok.auth.member.exception.AlreadyUsedPhoneNumberException

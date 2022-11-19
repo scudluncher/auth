@@ -49,7 +49,6 @@ class SecurityConfig {
     }
 }
 
-
 fun main(args: Array<String>) {
     runApplication<AuthApplication>(*args)
 }

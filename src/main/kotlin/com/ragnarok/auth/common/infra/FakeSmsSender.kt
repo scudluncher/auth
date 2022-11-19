@@ -8,6 +8,6 @@ import org.springframework.stereotype.Component
 class FakeSmsSender : ExternalMessageSender {
     override fun sendMessage(message: Message) {
         //console 에 찍고 메시지를 보낸다고 가정합니다.
-        println("receiver: ${message.receiver()} // contents: ${message.contents()}"       )
+        println("receiver: ${message.receiver()} // contents: ${message.contents()}")
     }
 }

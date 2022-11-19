@@ -1,6 +1,6 @@
 package com.ragnarok.auth.verification.exception
 
-open class VerificationConfirmFailException :RuntimeException()
+open class VerificationConfirmFailException : RuntimeException()
 
 class CodeNotMatchedException : VerificationConfirmFailException()
 

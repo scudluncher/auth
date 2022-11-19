@@ -86,7 +86,7 @@ class FakeMemberRepository : MemberRepository {
         Member(
             id = 5,
             email = Email("thor@godof.power"),
-            password = HashedPassword("fasdfqwer","asdfwer"),
+            password = HashedPassword("fasdfqwer", "asdfwer"),
             name = "thor odinson",
             nickName = "god of thunder",
             phoneNumber = "01033334444"

@@ -28,5 +28,8 @@ class RedisVerificationRepository(private val crudRepository: RedisVerificationC
 
 @Component
 interface RedisVerificationCrudRepository : CrudRepository<VerificationRedisEntity, Long> {
-    fun findFirstByPhoneNumberAndTypeOrderByCodeExpiredTimeDesc(phoneNumber: String, type: VerificationType) : VerificationRedisEntity?
+    fun findFirstByPhoneNumberAndTypeOrderByCodeExpiredTimeDesc(
+        phoneNumber: String,
+        type: VerificationType,
+    ): VerificationRedisEntity?
 }

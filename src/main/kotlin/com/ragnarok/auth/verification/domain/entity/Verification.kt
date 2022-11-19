@@ -1,9 +1,9 @@
 package com.ragnarok.auth.verification.domain.entity
 
 import com.ragnarok.auth.verification.domain.value.VerificationType
-import com.ragnarok.auth.verification.exception.OngoingVerificationException
 import com.ragnarok.auth.verification.exception.AlreadyVerifiedException
 import com.ragnarok.auth.verification.exception.NotExistingVerification
+import com.ragnarok.auth.verification.exception.OngoingVerificationException
 import com.ragnarok.auth.verification.exception.ValidVerificationTimeOverException
 import com.ragnarok.auth.verification.value.TimeLimit
 import java.time.LocalDateTime

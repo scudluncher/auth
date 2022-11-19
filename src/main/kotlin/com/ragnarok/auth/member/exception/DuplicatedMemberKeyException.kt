@@ -1,6 +1,6 @@
 package com.ragnarok.auth.member.exception
 
-open class DuplicatedMemberKeyException(val type: String) : RuntimeException() {}
+open class DuplicatedMemberKeyException(val type: String) : RuntimeException()
 
 class AlreadyUsedEmailException : DuplicatedMemberKeyException("이메일")
 
