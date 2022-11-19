@@ -12,7 +12,7 @@ Content-Type: application/json
 
 {
   "phoneNumber": "01089764629",
-  "code": "475082",
+  "code": "740354",
   "verificationType": "JOIN"
 }
 
@@ -27,3 +27,17 @@ Content-Type: application/json
   "nickName": "ragnarok is coming",
   "phoneNumber": "01089764629"
 }
+
+###
+POST http://localhost:8080/v1/auth/login
+Content-Type: application/json
+
+{
+  "email": "scudluncher@gmail.com",
+  "password": "asdfqwer1234"
+}
+
+
+### Authorization: Bearer {{token}}
+GET http://localhost:8080/v1/members/me
+Authorization: Bearer eyJhbGciOiJFUzI1NiJ9.eyJpZCI6MSwibmlja05hbWUiOiJyYWduYXJvayBpcyBjb21pbmciLCJleHAiOjE2Njg4NTE1MTN9.8_54bEQh2JKjcYSwuWJGhMSM6TtjTKnihEzvdhJ_Ad0u6uAjB3R3_NOJ1Wlz3esMJicwSFv6h1X-PXLc7vAx4A

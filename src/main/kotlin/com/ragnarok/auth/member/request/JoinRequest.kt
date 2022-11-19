@@ -1,12 +1,14 @@
 package com.ragnarok.auth.member.request
 
 import com.ragnarok.auth.member.usecase.JoinRequest
+import javax.validation.constraints.Email
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.Size
 
 class JoinRequest(
     @field:NotBlank
     @field:Size(max=50)
+    @field:Email
     private val email: String,
 
     //todo password validator

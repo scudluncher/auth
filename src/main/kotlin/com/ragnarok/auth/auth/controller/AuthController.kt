@@ -9,6 +9,7 @@ import com.ragnarok.auth.common.support.TokenProvider
 import com.ragnarok.auth.member.viewmodel.AuthResult
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 import javax.validation.Valid
 
@@ -18,7 +19,7 @@ class AuthController(
     private val tokenProvider: TokenProvider,
 ) : AuthenticationExtension {
     @PostMapping("/v1/auth/login")
-    fun login(@Valid request: LoginRequest): ResponseEntity<SingleResponse<AuthResult>> {
+    fun login(@RequestBody @Valid request: LoginRequest): ResponseEntity<SingleResponse<AuthResult>> {
         val member = authService.login(request.toMemberLoginRequest())
         val token = tokenProvider.token(
             TokenPayload(member.id, member.nickName)

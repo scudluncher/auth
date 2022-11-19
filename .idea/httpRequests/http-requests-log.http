@@ -1,0 +1,607 @@
+GET http://localhost:8080/v1/members/me
+Authorization: Bearer eyJhbGciOiJFUzI1NiJ9.eyJpZCI6MSwibmlja05hbWUiOiJyYWduYXJvayBpcyBjb21pbmciLCJleHAiOjE2Njg4NTE1MTN9.8_54bEQh2JKjcYSwuWJGhMSM6TtjTKnihEzvdhJ_Ad0u6uAjB3R3_NOJ1Wlz3esMJicwSFv6h1X-PXLc7vAx4A
+
+<> 2022-11-19T183214.200.json
+
+###
+
+POST http://localhost:8080/v1/auth/login
+Content-Type: application/json
+
+{
+  "email": "scudluncher@gmail.com",
+  "password": "asdfqwer1234"
+}
+
+<> 2022-11-19T183153.200.json
+
+###
+
+POST http://localhost:8080/v1/members
+Content-Type: application/json
+
+{
+  "email": "scudluncher@gmail.com",
+  "password": "asdfqwer1234",
+  "name": "YJ SHIN",
+  "nickName": "ragnarok is coming",
+  "phoneNumber": "01089764629"
+}
+
+<> 2022-11-19T183144.200.json
+
+###
+
+PATCH http://localhost:8080/v1/verification
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629",
+  "code": "740354",
+  "verificationType": "JOIN"
+}
+
+<> 2022-11-19T183134.200.json
+
+###
+
+POST http://localhost:8080/v1/verification/join
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629"
+}
+
+<> 2022-11-19T183116.200.json
+
+###
+
+GET http://localhost:8080/v1/members/me
+Authorization: Bearer eyJhbGciOiJFUzI1NiJ9.eyJpZCI6MSwibmlja05hbWUiOiJyYWduYXJvayBpcyBjb21pbmciLCJleHAiOjE2Njg4NTExNzV9.AZcFxPv7uGuSDv_oMFhcjopS1131K3vf-gKAz6VQ7HJ4cNc9cgqphs9JVnKyUsYyg9rhEFDFcl2VbnXjx8laSQ
+
+<> 2022-11-19T182652.200.json
+
+###
+
+GET http://localhost:8080/v1/members/me
+Authorization: Bearer eyJhbGciOiJFUzI1NiJ9.eyJpZCI6MSwibmlja05hbWUiOiJyYWduYXJvayBpcyBjb21pbmciLCJleHAiOjE2Njg4NTExNzV9.AZcFxPv7uGuSDv_oMFhcjopS1131K3vf-gKAz6VQ7HJ4cNc9cgqphs9JVnKyUsYyg9rhEFDFcl2VbnXjx8laSQ
+
+<> 2022-11-19T182640.200.json
+
+###
+
+POST http://localhost:8080/v1/auth/login
+Content-Type: application/json
+
+{
+  "email": "scudluncher@gmail.com",
+  "password": "asdfqwer1234"
+}
+
+<> 2022-11-19T182616.200.json
+
+###
+
+POST http://localhost:8080/v1/members
+Content-Type: application/json
+
+{
+  "email": "scudluncher@gmail.com",
+  "password": "asdfqwer1234",
+  "name": "YJ SHIN",
+  "nickName": "ragnarok is coming",
+  "phoneNumber": "01089764629"
+}
+
+<> 2022-11-19T182609.200.json
+
+###
+
+PATCH http://localhost:8080/v1/verification
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629",
+  "code": "513648",
+  "verificationType": "JOIN"
+}
+
+<> 2022-11-19T182601.200.json
+
+###
+
+POST http://localhost:8080/v1/verification/join
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629"
+}
+
+<> 2022-11-19T182548.200.json
+
+###
+
+POST http://localhost:8080/v1/auth/login
+Content-Type: application/json
+
+{
+  "email": "scudluncher@gmail.com",
+  "password": "asdfqwer1234"
+}
+
+<> 2022-11-19T182504.200.json
+
+###
+
+POST http://localhost:8080/v1/members
+Content-Type: application/json
+
+{
+  "email": "scudluncher@gmail.com",
+  "password": "asdfqwer1234",
+  "name": "YJ SHIN",
+  "nickName": "ragnarok is coming",
+  "phoneNumber": "01089764629"
+}
+
+<> 2022-11-19T182500.200.json
+
+###
+
+PATCH http://localhost:8080/v1/verification
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629",
+  "code": "037722",
+  "verificationType": "JOIN"
+}
+
+<> 2022-11-19T182455.200.json
+
+###
+
+POST http://localhost:8080/v1/verification/join
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629"
+}
+
+<> 2022-11-19T182445.200.json
+
+###
+
+POST http://localhost:8080/v1/auth/login
+Content-Type: application/json
+
+{
+  "email": "scudluncher@gmail.com",
+  "password": "asdfqwer1234"
+}
+
+<> 2022-11-19T182414.200.json
+
+###
+
+POST http://localhost:8080/v1/members
+Content-Type: application/json
+
+{
+  "email": "scudluncher@gmail.com",
+  "password": "asdfqwer1234",
+  "name": "YJ SHIN",
+  "nickName": "ragnarok is coming",
+  "phoneNumber": "01089764629"
+}
+
+<> 2022-11-19T182208.200.json
+
+###
+
+PATCH http://localhost:8080/v1/verification
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629",
+  "code": "234546",
+  "verificationType": "JOIN"
+}
+
+<> 2022-11-19T182205.200.json
+
+###
+
+POST http://localhost:8080/v1/verification/join
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629"
+}
+
+<> 2022-11-19T182157.200.json
+
+###
+
+POST http://localhost:8080/v1/auth/login
+Content-Type: application/json
+
+{
+  "email": "scudluncher@gmail.com",
+  "password": "asdfqwer1234"
+}
+
+<> 2022-11-19T181953.200.json
+
+###
+
+POST http://localhost:8080/v1/members
+Content-Type: application/json
+
+{
+  "email": "scudluncher@gmail.com",
+  "password": "asdfqwer1234",
+  "name": "YJ SHIN",
+  "nickName": "ragnarok is coming",
+  "phoneNumber": "01089764629"
+}
+
+<> 2022-11-19T181947.200.json
+
+###
+
+PATCH http://localhost:8080/v1/verification
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629",
+  "code": "672132",
+  "verificationType": "JOIN"
+}
+
+<> 2022-11-19T181943.200.json
+
+###
+
+POST http://localhost:8080/v1/verification/join
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629"
+}
+
+<> 2022-11-19T181937.200.json
+
+###
+
+GET http://localhost:8080/v1/members/me
+Authorization: Bearer eyJhbGciOiJFUzI1NiJ9.eyJpZCI6MSwibmlja05BbWUiOiJyYWduYXJvayBpcyBjb21pbmciLCJleHAiOjE2Njg4NTA1NDl9.hVOlYgM2Nx_C7sf2AbEzkBkARwC8CIgbUoppe7zKpHRppBarkvnyXQq2EwvmQPwMGZW7hhOm9c2ZlTRBeR4q2w
+
+<> 2022-11-19T181810.500.json
+
+###
+
+GET http://localhost:8080/v1/members/me
+Authorization: Bearer eyJhbGciOiJFUzI1NiJ9.eyJpZCI6MSwibmlja05BbWUiOiJyYWduYXJvayBpcyBjb21pbmciLCJleHAiOjE2Njg4NTA1NDl9.hVOlYgM2Nx_C7sf2AbEzkBkARwC8CIgbUoppe7zKpHRppBarkvnyXQq2EwvmQPwMGZW7hhOm9c2ZlTRBeR4q2w
+
+<> 2022-11-19T181802.500.json
+
+###
+
+POST http://localhost:8080/v1/auth/login
+Content-Type: application/json
+
+{
+  "email": "scudluncher@gmail.com",
+  "password": "asdfqwer1234"
+}
+
+<> 2022-11-19T181802.200.json
+
+###
+
+POST http://localhost:8080/v1/auth/login
+Content-Type: application/json
+
+{
+  "email": "scudluncher@gmail.com",
+  "password": "asdfqwer1234"
+}
+
+<> 2022-11-19T181515.200.json
+
+###
+
+POST http://localhost:8080/v1/auth/login
+Content-Type: application/json
+
+{
+  "email": "scudluncher@gmail.com",
+  "password": "asdfqwer1234"
+}
+
+<> 2022-11-19T181246.200.json
+
+###
+
+POST http://localhost:8080/v1/members
+Content-Type: application/json
+
+{
+  "email": "scudluncher@gmail.com",
+  "password": "asdfqwer1234",
+  "name": "YJ SHIN",
+  "nickName": "ragnarok is coming",
+  "phoneNumber": "01089764629"
+}
+
+<> 2022-11-19T181243.200.json
+
+###
+
+PATCH http://localhost:8080/v1/verification
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629",
+  "code": "875480",
+  "verificationType": "JOIN"
+}
+
+<> 2022-11-19T181238.200.json
+
+###
+
+POST http://localhost:8080/v1/verification/join
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629"
+}
+
+<> 2022-11-19T181226.200.json
+
+###
+
+POST http://localhost:8080/v1/auth/login
+Content-Type: application/json
+
+{
+  "email": "scudluncher@gmail.com",
+  "password": "asdfqwer1234"
+}
+
+<> 2022-11-19T181027.500.json
+
+###
+
+POST http://localhost:8080/v1/members
+Content-Type: application/json
+
+{
+  "email": "scudluncher@gmail.com",
+  "password": "asdfqwer1234",
+  "name": "YJ SHIN",
+  "nickName": "ragnarok is coming",
+  "phoneNumber": "01089764629"
+}
+
+<> 2022-11-19T180822.200.json
+
+###
+
+PATCH http://localhost:8080/v1/verification
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629",
+  "code": "330062",
+  "verificationType": "JOIN"
+}
+
+<> 2022-11-19T180817.200.json
+
+###
+
+PATCH http://localhost:8080/v1/verification
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629",
+  "code": "475082",
+  "verificationType": "JOIN"
+}
+
+<> 2022-11-19T180802.500.json
+
+###
+
+POST http://localhost:8080/v1/verification/join
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629"
+}
+
+<> 2022-11-19T180759.200.json
+
+###
+
+POST http://localhost:8080/v1/verification/join
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629"
+}
+
+<> 2022-11-19T180155.200.json
+
+###
+
+POST http://localhost:8080/v1/verification/join
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629"
+}
+
+###
+
+POST http://localhost:8080/v1/verification/join
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629"
+}
+
+<> 2022-11-19T180116.400.json
+
+###
+
+POST http://localhost:8080/v1/members
+Content-Type: application/json
+
+{
+  "email": "scudluncher@gmail.com",
+  "password": "asdfqwer1234",
+  "name": "YJ SHIN",
+  "nickName": "ragnarok is coming",
+  "phoneNumber": "01089764629"
+}
+
+<> 2022-11-19T175453.200.json
+
+###
+
+POST http://localhost:8080/v1/members
+Content-Type: application/json
+
+{
+  "email": "scudluncher@gmail.com",
+  "password": "asdfqwer1234",
+  "name": "YJ SHIN",
+  "nickName": "ragnarok is coming",
+  "phoneNumber": "01089764629"
+}
+
+<> 2022-11-19T175325.500.json
+
+###
+
+POST http://localhost:8080/v1/members
+Content-Type: application/json
+
+{
+  "email": "scudluncher@gmail.com",
+  "password": "asdfqwer1234",
+  "name": "YJ SHIN",
+  "nickName": "ragnarok is coming",
+  "phoneNumber": "01089764629"
+}
+
+<> 2022-11-19T175238.500.json
+
+###
+
+POST http://localhost:8080/v1/members
+Content-Type: application/json
+
+{
+  "email": "scudluncher@gmail.com",
+  "password": "asdfqwer1234",
+  "name": "YJ SHIN",
+  "nickName": "ragnarok is coming",
+  "phoneNumber": "010-8976-4629"
+}
+
+<> 2022-11-19T175229.500.json
+
+###
+
+POST http://localhost:8080/v1/members
+Content-Type: application/json
+
+{
+  "email": "scudluncher@gmail.com",
+  "password": "asdfqwer1234",
+  "name": "YJ SHIN",
+  "nickName": "ragnarok is coming",
+  "phoneNumber": "010-8976-4629"
+}
+
+<> 2022-11-19T175136.500.json
+
+###
+
+POST http://localhost:8080/v1/members
+Content-Type: application/json
+
+{
+  "email": "scudluncher@gmail.com",
+  "password": "asdfqwer1234",
+  "name": "YJ SHIN",
+  "nickName": "ragnarok is coming",
+  "phoneNumber": "010-8976-4629"
+}
+
+<> 2022-11-19T175121.500.json
+
+###
+
+PATCH http://localhost:8080/v1/verification
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629",
+  "code": "475082",
+  "verificationType": "JOIN"
+}
+
+<> 2022-11-19T175116.200.json
+
+###
+
+POST http://localhost:8080/v1/verification/join
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629"
+}
+
+<> 2022-11-19T175057.200.json
+
+###
+
+POST http://localhost:8080/v1/verification/join
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629"
+}
+
+<> 2022-11-19T175043.400.json
+
+###
+
+POST http://localhost:8080/v1/verification/join
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629"
+}
+
+<> 2022-11-19T174951.200.json
+
+###
+
+POST http://localhost:8080/v1/verification/join
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629"
+}
+
+<> 2022-11-19T174512.400.json
+
+###
+

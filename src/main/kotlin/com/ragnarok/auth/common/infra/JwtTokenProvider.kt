@@ -17,7 +17,7 @@ class JwtTokenProvider(
         return Jwts.builder()
             .signWith(keyStorage.privateKey)
             .claim("id", payload.id)
-            .claim("nickNAme", payload.nickName)
+            .claim("nickName", payload.nickName)
             .setExpiration(defaultExpiresIn())
             .compact()
     }
@@ -31,7 +31,7 @@ class JwtTokenProvider(
 
         return TokenPayload(
             claims.get("id", Integer::class.java).toLong(),
-            claims.get("name", String::class.java),
+            claims.get("nickName", String::class.java),
         )
     }
 
