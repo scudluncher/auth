@@ -1,4 +1,7 @@
 package com.ragnarok.auth.member.usecase
 
-class ShowingMeTest {
-}
+import io.kotest.core.spec.style.BehaviorSpec
+
+class ShowingMeTest : BehaviorSpec({
+    TODO()
+})

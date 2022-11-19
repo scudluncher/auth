@@ -55,8 +55,7 @@ fun Verification?.checkUsableVerification() {
     if (this == null) {
         throw NotExistingVerification()
     }
-
-    checkOngoingStatus()
+    if (!this.verified && this.codeExpiredTime.isAfter(LocalDateTime.now())) throw ActiveVerificationExistException()
 
     let {
         if (it.verified && it.verificationExpiredTime != null && it.verificationExpiredTime.isBefore(LocalDateTime.now())) {

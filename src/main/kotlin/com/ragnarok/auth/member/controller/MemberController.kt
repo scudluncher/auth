@@ -3,18 +3,12 @@ package com.ragnarok.auth.member.controller
 import com.ragnarok.auth.auth.request.PasswordResetRequest
 import com.ragnarok.auth.common.extension.AuthenticationExtension
 import com.ragnarok.auth.common.response.SingleResponse
-import com.ragnarok.auth.common.support.TokenPayload
-import com.ragnarok.auth.common.support.TokenProvider
 import com.ragnarok.auth.member.request.JoinRequest
 import com.ragnarok.auth.member.service.MemberService
-import com.ragnarok.auth.member.viewmodel.AuthResult
 import com.ragnarok.auth.member.viewmodel.MyInformation
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PatchMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
 
 @RestController
@@ -28,7 +22,7 @@ class MemberController(private val memberService: MemberService) : Authenticatio
     }
 
     @PostMapping("/v1/members")
-    fun join(@Valid request: JoinRequest): ResponseEntity<SingleResponse<MyInformation>> {
+    fun join(@RequestBody @Valid request: JoinRequest): ResponseEntity<SingleResponse<MyInformation>> {
         val member = memberService.join(request.toJoinRequest())
 
         return ResponseEntity.ok()
@@ -36,7 +30,7 @@ class MemberController(private val memberService: MemberService) : Authenticatio
     }
 
     @PatchMapping("/v1/members/password-reset")
-    fun resetPassword(@Valid request: PasswordResetRequest): ResponseEntity<SingleResponse<MyInformation>> {
+    fun resetPassword(@RequestBody @Valid request: PasswordResetRequest): ResponseEntity<SingleResponse<MyInformation>> {
         val member = memberService.resetPassword(request.toResettingRequest())
 
         return ResponseEntity(SingleResponse.Ok(MyInformation(member)), HttpStatus.ACCEPTED)

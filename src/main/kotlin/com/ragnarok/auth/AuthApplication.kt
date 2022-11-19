@@ -26,10 +26,11 @@ class AuthApplication {
             )
                 .addPathPatterns("/v1/**")
                 .excludePathPatterns(
-                    "/v1/members/",
+                    "/v1/members",
+                    "/v1/members/password-reset",
                     "/v1/verification/*",
                     "/v1/verification",
-                    "/v1/auth/*"
+                    "/v1/auth/login"
                 )
         }
     }

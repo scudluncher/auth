@@ -8,14 +8,18 @@ class JoinRequest(
     @field:NotBlank
     @field:Size(max=50)
     private val email: String,
+
     //todo password validator
     private val password: String,
+
     @field:NotBlank
     @field:Size(max=30)
     private val name: String,
+
     @field:NotBlank
     @field:Size(max=30)
     private val nickName: String,
+
     @field:NotBlank
     @field:Size(max=15)
     private val phoneNumber: String,

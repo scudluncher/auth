@@ -1,8 +1,7 @@
 package com.ragnarok.auth.verification.usecase
 
-import io.kotest.core.spec.style.FunSpec
-import io.kotest.matchers.shouldBe
+import io.kotest.core.spec.style.BehaviorSpec
 
-class ConfirmingVerificationTest : FunSpec({
-
+class ConfirmingVerificationTest : BehaviorSpec({
+    TODO()
 })

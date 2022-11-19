@@ -1,0 +1,29 @@
+###
+POST http://localhost:8080/v1/verification/join
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629"
+}
+
+###
+PATCH http://localhost:8080/v1/verification
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629",
+  "code": "475082",
+  "verificationType": "JOIN"
+}
+
+###
+POST http://localhost:8080/v1/members
+Content-Type: application/json
+
+{
+  "email": "scudluncher@gmail.com",
+  "password": "asdfqwer1234",
+  "name": "YJ SHIN",
+  "nickName": "ragnarok is coming",
+  "phoneNumber": "01089764629"
+}
