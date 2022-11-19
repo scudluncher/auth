@@ -24,8 +24,8 @@ class MemberJpaEntity(
     constructor(member: Member) : this(
         member.id,
         member.email.address,
-        member.password?.hashed ?: "",
-        member.password?.salt ?: "",
+        member.password.hashed,
+        member.password.salt,
         member.name,
         member.nickName,
         member.phoneNumber
@@ -34,7 +34,7 @@ class MemberJpaEntity(
     override fun update(domainEntity: Member) {
         id = domainEntity.id
         emailAddress = domainEntity.email.address
-        domainEntity.password?.let {
+        domainEntity.password.let {
             password = it.hashed
             salt = it.salt
         }
@@ -47,7 +47,7 @@ class MemberJpaEntity(
         return Member(
             id,
             Email(emailAddress),
-            if (password.isNotBlank() && salt.isNotBlank()) HashedPassword(password, salt) else null,
+            HashedPassword(password, salt),
             name,
             nickName,
             phoneNumber

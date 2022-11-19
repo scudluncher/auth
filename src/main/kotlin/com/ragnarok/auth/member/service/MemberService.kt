@@ -27,15 +27,7 @@ class MemberService(
             .execute()
     }
 
-    fun me(id: Long): Member {
-        return ShowingMe(
-            memberRepository,
-            id
-        )
-            .retrieve()
-    }
-
-    fun resetPassword(request:ResettingRequest):Member {
+    fun resetPassword(request: ResettingRequest): Member {
         return PasswordResetting(
             request,
             memberRepository,
@@ -43,5 +35,13 @@ class MemberService(
             hashingProvider
         )
             .execute()
+    }
+
+    fun me(id: Long): Member {
+        return ShowingMe(
+            memberRepository,
+            id
+        )
+            .retrieve()
     }
 }
