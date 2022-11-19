@@ -38,7 +38,7 @@ class GeneratingResetVerificationTest : BehaviorSpec({
     }
 
     given("기존 가입자가 비밀번호 재설정 인증을 완료 하였으나, 인증 완료 시간이 지난 후 다시 전화번호를 제출하고") {
-        val phoneNumber = "01012345678"
+        val phoneNumber = "01033334444"
         val generatingResetVerification = prepareResetVerification(phoneNumber)
         When("인증 코드를 생성하면") {
             generatingResetVerification.execute()

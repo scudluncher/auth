@@ -4,6 +4,7 @@ import com.ragnarok.auth.verification.domain.value.VerificationType
 import com.ragnarok.auth.verification.exception.ActiveVerificationExistException
 import com.ragnarok.auth.verification.exception.AlreadyVerifiedException
 import com.ragnarok.auth.verification.value.TimeLimit
+import net.bytebuddy.asm.Advice
 import java.time.LocalDateTime
 
 class Verification(
@@ -43,7 +44,8 @@ class Verification(
     fun checkVerifiable() {
         let {
             if (!it.verified && it.codeExpiredTime.isAfter(LocalDateTime.now())) throw ActiveVerificationExistException()
-            if (it.verified && it.verificationExpiredTime != null) throw AlreadyVerifiedException(it.verificationExpiredTime)
+            if (it.verified && it.verificationExpiredTime != null && it.verificationExpiredTime.isAfter(LocalDateTime.now()))
+                throw AlreadyVerifiedException(it.verificationExpiredTime)
         }
     }
 }

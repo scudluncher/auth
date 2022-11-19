@@ -95,8 +95,8 @@ class FakeVerificationRepository : VerificationRepository {
         // 비밀번호 재설정을을 위해 인증 했으나, 유효 인증 시간이 지나버린 경우
         Verification(
             id = 6,
-            phoneNumber = "01012345678",
-            code = "876543",
+            phoneNumber = "01033334444",
+            code = "434343",
             codeExpiredTime = LocalDateTime.now().minusMinutes(12),
             type = VerificationType.RESET,
             verificationExpiredTime = LocalDateTime.now().minusMinutes(2),
