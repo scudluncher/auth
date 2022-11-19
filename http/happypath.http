@@ -12,7 +12,7 @@ Content-Type: application/json
 
 {
   "phoneNumber": "01089764629",
-  "code": "740354",
+  "code": "803730",
   "verificationType": "JOIN"
 }
 
@@ -41,3 +41,42 @@ Content-Type: application/json
 ### Authorization: Bearer {{token}}
 GET http://localhost:8080/v1/members/me
 Authorization: Bearer eyJhbGciOiJFUzI1NiJ9.eyJpZCI6MSwibmlja05hbWUiOiJyYWduYXJvayBpcyBjb21pbmciLCJleHAiOjE2Njg4NTE1MTN9.8_54bEQh2JKjcYSwuWJGhMSM6TtjTKnihEzvdhJ_Ad0u6uAjB3R3_NOJ1Wlz3esMJicwSFv6h1X-PXLc7vAx4A
+
+
+### 비밀번호 초기화 요청
+POST http://localhost:8080/v1/verification/reset
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629"
+}
+
+### 비밀번호 초기화 인증
+PATCH http://localhost:8080/v1/verification
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629",
+  "code": "465852",
+  "verificationType": "RESET"
+}
+
+
+### 실제 비밀번호 변경
+PATCH http://localhost:8080/v1/members/password-reset
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629",
+  "newPassword": "87654321"
+}
+
+
+###
+POST http://localhost:8080/v1/auth/login
+Content-Type: application/json
+
+{
+  "email": "scudluncher@gmail.com",
+  "password": "87654321"
+}
