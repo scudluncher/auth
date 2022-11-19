@@ -1,4 +1,4 @@
-package com.ragnarok.auth.common.exception
+package com.ragnarok.auth.auth.exception
 
 class AuthorizationException : RuntimeException {
     constructor()

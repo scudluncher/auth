@@ -1,6 +1,6 @@
 package com.ragnarok.auth.common.support
 
-import com.ragnarok.auth.common.exception.AuthorizationException
+import com.ragnarok.auth.auth.exception.AuthorizationException
 import io.jsonwebtoken.ExpiredJwtException
 import io.jsonwebtoken.JwtException
 import org.springframework.security.core.context.SecurityContextHolder

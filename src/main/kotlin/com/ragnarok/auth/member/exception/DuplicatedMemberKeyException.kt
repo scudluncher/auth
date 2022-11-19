@@ -1,9 +1,9 @@
 package com.ragnarok.auth.member.exception
 
-open class DuplicatedMemberKeyException : RuntimeException()
+open class DuplicatedMemberKeyException(val type: String) : RuntimeException() {}
 
-class AlreadyUsedEmailException : DuplicatedMemberKeyException()
+class AlreadyUsedEmailException : DuplicatedMemberKeyException("이메일")
 
-class AlreadyUsedNickNameException : DuplicatedMemberKeyException()
+class AlreadyUsedNickNameException : DuplicatedMemberKeyException("별명")
 
-class AlreadyUsedPhoneNumberException : DuplicatedMemberKeyException()
+class AlreadyUsedPhoneNumberException : DuplicatedMemberKeyException("전화번호")

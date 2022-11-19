@@ -1,6 +1,6 @@
 package com.ragnarok.auth.common.extension
 
-import com.ragnarok.auth.common.exception.AuthorizationException
+import com.ragnarok.auth.auth.exception.AuthorizationException
 import com.ragnarok.auth.common.support.TokenPayload
 import org.springframework.security.core.context.SecurityContextHolder
 

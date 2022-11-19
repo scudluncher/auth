@@ -1,3 +1,6 @@
 package com.ragnarok.auth.common.response
 
-class ErrorResponse(val code: String, val message: String)
+class ErrorResponse(
+    private val code: String,
+    private val message: String,
+)
