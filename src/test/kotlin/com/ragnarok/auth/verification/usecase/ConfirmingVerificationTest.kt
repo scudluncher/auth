@@ -11,7 +11,7 @@ import io.kotest.matchers.shouldBe
 
 class ConfirmingVerificationTest : BehaviorSpec({
 
-    given("올바른 코드를") {
+    given("올바른 코드가 주어지고") {
         val phoneNumber = "01055555555"
         val code = "555555"
         val type = VerificationType.JOIN
@@ -79,7 +79,7 @@ class ConfirmingVerificationTest : BehaviorSpec({
 
         val confirmingVerification = prepareConfirmingVerification(request)
         When("너무 늦게 입력하면") {
-            then("코드가 잘못되었음을 알린다.") {
+            then("코드가 되었음을 알린다.") {
                 shouldThrow<CodeExpiredException> { confirmingVerification.execute() }
             }
         }
