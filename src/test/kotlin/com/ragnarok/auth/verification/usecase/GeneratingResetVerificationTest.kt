@@ -5,7 +5,7 @@ import com.ragnarok.auth.member.domain.repository.FakeMemberRepository
 import com.ragnarok.auth.member.exception.NoMemberFoundException
 import com.ragnarok.auth.verification.domain.repository.FakeVerificationRepository
 import com.ragnarok.auth.verification.domain.value.VerificationType
-import com.ragnarok.auth.verification.exception.ActiveVerificationExistException
+import com.ragnarok.auth.verification.exception.OngoingVerificationException
 import com.ragnarok.auth.verification.exception.AlreadyVerifiedException
 import com.ragnarok.auth.verification.request.VerificationRequest
 import io.kotest.assertions.throwables.shouldThrow
@@ -73,7 +73,7 @@ class GeneratingResetVerificationTest : BehaviorSpec({
         val generatingResetVerification = prepareResetVerification(phoneNumber)
         When("인증 코드를 생성하려 하면") {
             then("진행중인 인증이 존재함을 알린다.") {
-                shouldThrow<ActiveVerificationExistException> { generatingResetVerification.execute() }
+                shouldThrow<OngoingVerificationException> { generatingResetVerification.execute() }
             }
         }
     }

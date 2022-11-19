@@ -22,7 +22,7 @@ class FakeMemberRepository : MemberRepository {
     }
 
     override fun findByEmail(email: Email): Member? {
-        return members.firstOrNull { it.email == email }
+        return members.firstOrNull { it.email.address == email.address }
     }
 
     override fun save(member: Member): Member {
@@ -54,7 +54,7 @@ class FakeMemberRepository : MemberRepository {
         Member(
             id = 1,
             email = Email("cretos@olympus.com"),
-            password = HashedPassword("asdfqwer", "zxcv"),
+            password = HashedPassword("asdfqwer", "asdf"),
             name = "Cretos",
             nickName = "Son Of Zeus",
             phoneNumber = "01011111111"

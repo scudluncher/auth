@@ -101,6 +101,16 @@ class FakeVerificationRepository : VerificationRepository {
             type = VerificationType.RESET,
             verificationExpiredTime = LocalDateTime.now().minusMinutes(2),
             verified = true
-        )
+        ),
+        // 최초 가입자, 올바른 인증코드 제출 성공, 가입 가능 상태
+        Verification(
+            id = 7,
+            phoneNumber = "01078783434",
+            code = "323274",
+            codeExpiredTime = LocalDateTime.now().plusMinutes(TimeLimit.CODE_EXPIRED),
+            type = VerificationType.JOIN,
+            verificationExpiredTime = LocalDateTime.now().plusMinutes(TimeLimit.VALID_VERIFICATION_EXPIRED),
+            verified = true
+        ),
     )
 }

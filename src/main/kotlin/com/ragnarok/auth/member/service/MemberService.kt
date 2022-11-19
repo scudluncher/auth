@@ -39,8 +39,8 @@ class MemberService(
 
     fun me(id: Long): Member {
         return ShowingMe(
-            memberRepository,
-            id
+            id,
+            memberRepository
         )
             .retrieve()
     }

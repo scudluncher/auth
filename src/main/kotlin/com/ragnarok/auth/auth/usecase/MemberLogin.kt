@@ -54,9 +54,9 @@ class MemberLogin(
 }
 
 class MemberLoginRequest(
-    val id: Long?,
-    val phoneNumber: String?,
-    val email: Email?,
-    val nickName: String?,
+    val id: Long? = null,
+    val phoneNumber: String? = null,
+    val email: Email? = null,
+    val nickName: String? = null,
     val password: String,
 )

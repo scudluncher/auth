@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice
 
 @RestControllerAdvice
 class VerificationErrorHandlingAdvice {
-    @ExceptionHandler(ActiveVerificationExistException::class)
-    fun activeVerificationExist(): ResponseEntity<ErrorResponse> {
+    @ExceptionHandler(OngoingVerificationException::class)
+    fun ongoingVerificationExist(): ResponseEntity<ErrorResponse> {
         return ResponseEntity.status(HttpStatus.CONFLICT)
             .body(ErrorResponse(
                 "verification_ongoing",

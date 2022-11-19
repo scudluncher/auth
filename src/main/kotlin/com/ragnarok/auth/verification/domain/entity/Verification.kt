@@ -1,7 +1,7 @@
 package com.ragnarok.auth.verification.domain.entity
 
 import com.ragnarok.auth.verification.domain.value.VerificationType
-import com.ragnarok.auth.verification.exception.ActiveVerificationExistException
+import com.ragnarok.auth.verification.exception.OngoingVerificationException
 import com.ragnarok.auth.verification.exception.AlreadyVerifiedException
 import com.ragnarok.auth.verification.exception.NotExistingVerification
 import com.ragnarok.auth.verification.exception.ValidVerificationTimeOverException
@@ -44,7 +44,7 @@ class Verification(
 
     fun checkOngoingStatus() {
         let {
-            if (!it.verified && it.codeExpiredTime.isAfter(LocalDateTime.now())) throw ActiveVerificationExistException()
+            if (!it.verified && it.codeExpiredTime.isAfter(LocalDateTime.now())) throw OngoingVerificationException()
             if (it.verified && it.verificationExpiredTime != null && it.verificationExpiredTime.isAfter(LocalDateTime.now()))
                 throw AlreadyVerifiedException(it.verificationExpiredTime)
         }
@@ -55,7 +55,7 @@ fun Verification?.checkUsableVerification() {
     if (this == null) {
         throw NotExistingVerification()
     }
-    if (!this.verified && this.codeExpiredTime.isAfter(LocalDateTime.now())) throw ActiveVerificationExistException()
+    if (!this.verified && this.codeExpiredTime.isAfter(LocalDateTime.now())) throw OngoingVerificationException()
 
     let {
         if (it.verified && it.verificationExpiredTime != null && it.verificationExpiredTime.isBefore(LocalDateTime.now())) {

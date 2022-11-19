@@ -1,9 +1,8 @@
 package com.ragnarok.auth.common.support
 
-import com.ragnarok.auth.common.exception.InitializingFailException
-import java.security.*
-import java.security.spec.ECGenParameterSpec
-
+import java.security.KeyPair
+import java.security.PrivateKey
+import java.security.PublicKey
 
 interface KeyStorage {
     val privateKey: PrivateKey
@@ -13,8 +12,3 @@ interface KeyStorage {
         return KeyPair(publicKey, privateKey)
     }
 }
-
-
-//interface JwsKeyStorage : KeyStorage {
-//
-//}
