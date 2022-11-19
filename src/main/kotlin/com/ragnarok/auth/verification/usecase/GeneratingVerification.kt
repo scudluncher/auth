@@ -8,8 +8,7 @@ import com.ragnarok.auth.member.exception.NoMemberFoundException
 import com.ragnarok.auth.verification.domain.entity.Verification
 import com.ragnarok.auth.verification.domain.repository.VerificationRepository
 import com.ragnarok.auth.verification.domain.value.VerificationType
-import com.ragnarok.auth.verification.exception.ActiveVerificationExistException
-import com.ragnarok.auth.verification.usecase.value.TimeLimit
+import com.ragnarok.auth.verification.value.TimeLimit
 import java.time.LocalDateTime
 import kotlin.random.Random
 
@@ -76,8 +75,5 @@ fun randomCode(): String {
         .joinToString(separator = "")
 }
 
-fun VerificationRepository.checkVerifiable(phoneNumber: String, type:VerificationType) {
-
-}
 
 

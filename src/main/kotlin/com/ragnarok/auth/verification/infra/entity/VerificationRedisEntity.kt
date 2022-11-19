@@ -3,6 +3,7 @@ package com.ragnarok.auth.verification.infra.entity
 import com.ragnarok.auth.common.infra.InfraEntity
 import com.ragnarok.auth.verification.domain.entity.Verification
 import com.ragnarok.auth.verification.domain.value.VerificationType
+import com.ragnarok.auth.verification.value.TimeLimit
 import org.springframework.data.annotation.Id
 import org.springframework.data.redis.core.RedisHash
 import org.springframework.data.redis.core.index.Indexed
@@ -10,7 +11,7 @@ import java.time.LocalDateTime
 import javax.persistence.EnumType
 import javax.persistence.Enumerated
 
-@RedisHash(value = "verification", timeToLive = 60 * 15)
+@RedisHash(value = "verification", timeToLive = 60 * TimeLimit.TTL_MINUTES)
 class VerificationRedisEntity(
     @Id
     @Indexed

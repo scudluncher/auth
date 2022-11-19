@@ -3,7 +3,7 @@ package com.ragnarok.auth.verification.domain.entity
 import com.ragnarok.auth.verification.domain.value.VerificationType
 import com.ragnarok.auth.verification.exception.ActiveVerificationExistException
 import com.ragnarok.auth.verification.exception.AlreadyVerifiedException
-import com.ragnarok.auth.verification.usecase.value.TimeLimit
+import com.ragnarok.auth.verification.value.TimeLimit
 import java.time.LocalDateTime
 
 class Verification(
@@ -36,7 +36,7 @@ class Verification(
     fun verified(): Verification {
         return this.copy(
             verified = true,
-            verificationExpiredTime = LocalDateTime.now().plusMinutes(TimeLimit.VERIFICATION_EXPIRED)
+            verificationExpiredTime = LocalDateTime.now().plusMinutes(TimeLimit.VALID_VERIFICATION_EXPIRED)
         )
     }
 

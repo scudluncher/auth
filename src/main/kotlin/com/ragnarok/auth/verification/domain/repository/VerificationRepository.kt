@@ -2,7 +2,7 @@ package com.ragnarok.auth.verification.domain.repository
 
 import com.ragnarok.auth.verification.domain.entity.Verification
 import com.ragnarok.auth.verification.domain.value.VerificationType
-import com.ragnarok.auth.verification.usecase.value.TimeLimit
+import com.ragnarok.auth.verification.value.TimeLimit
 import java.time.LocalDateTime
 
 interface VerificationRepository {
@@ -60,7 +60,8 @@ class FakeVerificationRepository : VerificationRepository {
             code = "444444",
             codeExpiredTime = LocalDateTime.now().plusMinutes(TimeLimit.CODE_EXPIRED),
             type = VerificationType.JOIN,
-            verified = false,
+            verificationExpiredTime = LocalDateTime.now().plusMinutes(TimeLimit.VALID_VERIFICATION_EXPIRED),
+            verified = true
         ),
         // cretos : 비밀번호 리셋 진행중, 인증코드 미제출 상태
         Verification(
@@ -78,8 +79,28 @@ class FakeVerificationRepository : VerificationRepository {
             code = "888888",
             codeExpiredTime = LocalDateTime.now(),
             type = VerificationType.RESET,
-            verificationExpiredTime = LocalDateTime.now().plusMinutes(TimeLimit.VERIFICATION_EXPIRED),
+            verificationExpiredTime = LocalDateTime.now().plusMinutes(TimeLimit.VALID_VERIFICATION_EXPIRED),
             verified = true,
         ),
+        // 가입을 위해 인증 했으나, 유효 인증 시간이 지나버린 경우
+        Verification(
+            id = 5,
+            phoneNumber = "01099999999",
+            code = "111111",
+            codeExpiredTime = LocalDateTime.now().minusMinutes(12),
+            type = VerificationType.JOIN,
+            verificationExpiredTime = LocalDateTime.now().minusMinutes(2),
+            verified = true
+        ),
+        // 비밀번호 재설정을을 위해 인증 했으나, 유효 인증 시간이 지나버린 경우
+        Verification(
+            id = 6,
+            phoneNumber = "01012345678",
+            code = "876543",
+            codeExpiredTime = LocalDateTime.now().minusMinutes(12),
+            type = VerificationType.RESET,
+            verificationExpiredTime = LocalDateTime.now().minusMinutes(2),
+            verified = true
+        )
     )
 }
