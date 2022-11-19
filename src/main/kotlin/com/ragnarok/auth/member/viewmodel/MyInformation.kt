@@ -17,4 +17,3 @@ class MyInformation(
         member.phoneNumber
     )
 }
-

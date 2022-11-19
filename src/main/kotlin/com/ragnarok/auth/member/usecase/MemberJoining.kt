@@ -8,13 +8,20 @@ import com.ragnarok.auth.member.domain.value.HashedPassword
 import com.ragnarok.auth.member.exception.AlreadyUsedEmailException
 import com.ragnarok.auth.member.exception.AlreadyUsedNickNameException
 import com.ragnarok.auth.member.exception.AlreadyUsedPhoneNumberException
+import com.ragnarok.auth.verification.domain.entity.checkUsableVerification
+import com.ragnarok.auth.verification.domain.repository.VerificationRepository
+import com.ragnarok.auth.verification.domain.value.VerificationType
 
 class MemberJoining(
     private val request: JoinRequest,
     private val memberRepository: MemberRepository,
+    private val verificationRepository: VerificationRepository,
     private val hashingProvider: HashingProvider,
 ) {
     fun execute(): Member {
+        val verification = verificationRepository.findByPhoneNumberAndType(request.phoneNumber, VerificationType.JOIN)
+        verification.checkUsableVerification()
+
         judgeKeyUsable(request)
 
         val salt = hashingProvider.salt()

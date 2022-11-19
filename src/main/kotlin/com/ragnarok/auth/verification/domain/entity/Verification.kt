@@ -3,8 +3,9 @@ package com.ragnarok.auth.verification.domain.entity
 import com.ragnarok.auth.verification.domain.value.VerificationType
 import com.ragnarok.auth.verification.exception.ActiveVerificationExistException
 import com.ragnarok.auth.verification.exception.AlreadyVerifiedException
+import com.ragnarok.auth.verification.exception.NotExistingVerification
+import com.ragnarok.auth.verification.exception.ValidVerificationTimeOverException
 import com.ragnarok.auth.verification.value.TimeLimit
-import net.bytebuddy.asm.Advice
 import java.time.LocalDateTime
 
 class Verification(
@@ -35,17 +36,31 @@ class Verification(
     )
 
     fun verified(): Verification {
-        return this.copy(
+        return copy(
             verified = true,
             verificationExpiredTime = LocalDateTime.now().plusMinutes(TimeLimit.VALID_VERIFICATION_EXPIRED)
         )
     }
 
-    fun checkVerifiable() {
+    fun checkOngoingStatus() {
         let {
             if (!it.verified && it.codeExpiredTime.isAfter(LocalDateTime.now())) throw ActiveVerificationExistException()
             if (it.verified && it.verificationExpiredTime != null && it.verificationExpiredTime.isAfter(LocalDateTime.now()))
                 throw AlreadyVerifiedException(it.verificationExpiredTime)
+        }
+    }
+}
+
+fun Verification?.checkUsableVerification() {
+    if (this == null) {
+        throw NotExistingVerification()
+    }
+
+    checkOngoingStatus()
+
+    let {
+        if (it.verified && it.verificationExpiredTime != null && it.verificationExpiredTime.isBefore(LocalDateTime.now())) {
+            throw ValidVerificationTimeOverException()
         }
     }
 }

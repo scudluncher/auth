@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RestController
 import javax.validation.Valid
 
-@RestController("/v1/members")
+@RestController
 class MemberController(
     private val memberService: MemberService,
     private val tokenProvider: TokenProvider,
 ) : AuthenticationExtension {
-    @GetMapping("/me")
+    @GetMapping("/v1/members/me")
     fun myInformation(): ResponseEntity<SingleResponse<MyInformation>> {
         val myInfo = MyInformation(memberService.me(id()))
 
@@ -27,7 +27,7 @@ class MemberController(
             .body(SingleResponse.Ok(myInfo))
     }
 
-    @PostMapping
+    @PostMapping("/v1/members")
     fun join(@Valid request: JoinRequest): ResponseEntity<SingleResponse<AuthResult>> {
         val member = memberService.join(request.toJoinRequest())
         val token = tokenProvider.token(

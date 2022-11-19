@@ -23,7 +23,7 @@ class GeneratingJoinVerification(
             ?.let { throw AlreadyRegisteredMemberException() }
 
         verificationRepository.findByPhoneNumberAndType(request.phoneNumber, VerificationType.JOIN)
-            ?.checkVerifiable()
+            ?.checkOngoingStatus()
 
         val verification = Verification(
             null,
@@ -50,7 +50,7 @@ class GeneratingResetVerification(
             ?: throw NoMemberFoundException()
 
         verificationRepository.findByPhoneNumberAndType(request.phoneNumber, VerificationType.RESET)
-            ?.checkVerifiable()
+            ?.checkOngoingStatus()
 
         val verification = Verification(
             null,
