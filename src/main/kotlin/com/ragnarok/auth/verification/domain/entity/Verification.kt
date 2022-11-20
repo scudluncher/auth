@@ -2,7 +2,7 @@ package com.ragnarok.auth.verification.domain.entity
 
 import com.ragnarok.auth.verification.domain.value.VerificationType
 import com.ragnarok.auth.verification.exception.AlreadyVerifiedException
-import com.ragnarok.auth.verification.exception.NotExistingVerification
+import com.ragnarok.auth.verification.exception.NotExistingVerificationException
 import com.ragnarok.auth.verification.exception.OngoingVerificationException
 import com.ragnarok.auth.verification.exception.ValidVerificationTimeOverException
 import com.ragnarok.auth.verification.value.TimeLimit
@@ -53,7 +53,7 @@ class Verification(
 
 fun Verification?.checkUsableVerification() {
     if (this == null) {
-        throw NotExistingVerification()
+        throw NotExistingVerificationException()
     }
     if (!this.verified && this.codeExpiredTime.isAfter(LocalDateTime.now())) throw OngoingVerificationException()
 

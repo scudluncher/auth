@@ -8,7 +8,5 @@ services:
     labels:
       - "name=redis"
       - "mode=standalone"
-#    volumes:
-#      - /Users/yjshin/Database-docker/data/redis:/data
     ports:
       - 6379:6379

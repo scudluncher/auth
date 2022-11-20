@@ -31,7 +31,7 @@ class VerificationErrorHandlingAdvice {
             )
     }
 
-    @ExceptionHandler(NotExistingVerification::class)
+    @ExceptionHandler(NotExistingVerificationException::class)
     fun notExistingVerification(): ResponseEntity<ErrorResponse> {
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
             .body(

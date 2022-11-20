@@ -4,7 +4,7 @@ import com.ragnarok.auth.verification.domain.repository.VerificationRepository
 import com.ragnarok.auth.verification.domain.value.VerificationType
 import com.ragnarok.auth.verification.exception.CodeExpiredException
 import com.ragnarok.auth.verification.exception.CodeNotMatchedException
-import com.ragnarok.auth.verification.exception.NotExistingVerification
+import com.ragnarok.auth.verification.exception.NotExistingVerificationException
 import java.time.LocalDateTime
 
 class ConfirmingVerification(
@@ -13,7 +13,7 @@ class ConfirmingVerification(
 ) {
     fun execute() {
         val verification = verificationRepository.findByPhoneNumberAndType(request.phoneNumber, request.type)
-            ?: throw NotExistingVerification()
+            ?: throw NotExistingVerificationException()
 
         if (verification.code != request.code) {
             throw CodeNotMatchedException()

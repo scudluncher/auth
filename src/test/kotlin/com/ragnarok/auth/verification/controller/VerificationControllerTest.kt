@@ -155,7 +155,7 @@ class VerificationControllerTest : ControllerTestExtension, AnnotationSpec() {
 
         val content = objectMapper.writeValueAsString(request)
 
-         doNothing().`when`(verificationService).generateJoinVerification(any())
+        doNothing().`when`(verificationService).generateJoinVerification(any())
 
         mockMvc.perform(
             post("/v1/verification/join")
@@ -310,7 +310,7 @@ class VerificationControllerTest : ControllerTestExtension, AnnotationSpec() {
         )
 
         verificationService.stub {
-            on { confirmVerification(any()) } doThrow NotExistingVerification()
+            on { confirmVerification(any()) } doThrow NotExistingVerificationException()
         }
 
         mockMvc.perform(

@@ -21,7 +21,6 @@ repositories {
 }
 
 val kotestVersion = "5.5.4"
-//val jjwtVersion = "0.11.2"
 val jjwtVersion = "0.11.5"
 
 dependencies {
@@ -45,7 +44,6 @@ dependencies {
     testImplementation("io.kotest.extensions:kotest-extensions-spring:1.1.2")
     testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
     testImplementation("org.mockito:mockito-inline:4.8.0")
-//    testImplementation("org.mockito:mockito-inline:4.6.1")
 }
 
 tasks.withType<KotlinCompile> {

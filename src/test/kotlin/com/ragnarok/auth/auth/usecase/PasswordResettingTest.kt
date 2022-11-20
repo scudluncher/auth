@@ -3,7 +3,7 @@ package com.ragnarok.auth.auth.usecase
 import com.ragnarok.auth.common.support.FakeHashingProvider
 import com.ragnarok.auth.member.domain.repository.FakeMemberRepository
 import com.ragnarok.auth.verification.domain.repository.FakeVerificationRepository
-import com.ragnarok.auth.verification.exception.NotExistingVerification
+import com.ragnarok.auth.verification.exception.NotExistingVerificationException
 import com.ragnarok.auth.verification.exception.OngoingVerificationException
 import com.ragnarok.auth.verification.exception.ValidVerificationTimeOverException
 import io.kotest.assertions.throwables.shouldThrow
@@ -41,7 +41,7 @@ class PasswordResettingTest : BehaviorSpec({
         val passwordResetting = preparePasswordResetting(request)
         When("새로운 비밀번호와 전화번호를 입력하여 비밀번호를 재설정하면") {
             then("해당하는 인증이 없음을 알린다. ") {
-                shouldThrow<NotExistingVerification> { passwordResetting.execute() }
+                shouldThrow<NotExistingVerificationException> { passwordResetting.execute() }
             }
         }
     }
@@ -75,7 +75,7 @@ class PasswordResettingTest : BehaviorSpec({
         val passwordResetting = preparePasswordResetting(request)
         When("새로운 비밀번호와 전화번호를 입력하여 비밀번호를 재설정하면") {
             then("인증이 완료되었음을 알린다.") {
-                shouldThrow< ValidVerificationTimeOverException> { passwordResetting.execute()}
+                shouldThrow<ValidVerificationTimeOverException> { passwordResetting.execute() }
             }
         }
     }

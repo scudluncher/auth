@@ -64,7 +64,7 @@ class RedisVerificationCrudRepositoryTest : BehaviorSpec() {
                 )
                 then("코드 만료 내림차순으로 하나의 인증이 조회된다.") {
                     result shouldNotBe null
-                    result?.let{
+                    result?.let {
                         it.phoneNumber shouldBe phoneNumber
                         it.type shouldBe type
                     }

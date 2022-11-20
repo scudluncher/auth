@@ -5,8 +5,8 @@ import com.ragnarok.auth.member.domain.repository.FakeMemberRepository
 import com.ragnarok.auth.member.exception.AlreadyRegisteredMemberException
 import com.ragnarok.auth.verification.domain.repository.FakeVerificationRepository
 import com.ragnarok.auth.verification.domain.value.VerificationType
-import com.ragnarok.auth.verification.exception.OngoingVerificationException
 import com.ragnarok.auth.verification.exception.AlreadyVerifiedException
+import com.ragnarok.auth.verification.exception.OngoingVerificationException
 import com.ragnarok.auth.verification.request.VerificationRequest
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.BehaviorSpec

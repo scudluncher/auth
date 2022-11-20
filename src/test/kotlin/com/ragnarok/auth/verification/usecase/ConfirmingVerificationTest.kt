@@ -4,7 +4,7 @@ import com.ragnarok.auth.verification.domain.repository.FakeVerificationReposito
 import com.ragnarok.auth.verification.domain.value.VerificationType
 import com.ragnarok.auth.verification.exception.CodeExpiredException
 import com.ragnarok.auth.verification.exception.CodeNotMatchedException
-import com.ragnarok.auth.verification.exception.NotExistingVerification
+import com.ragnarok.auth.verification.exception.NotExistingVerificationException
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
@@ -44,7 +44,7 @@ class ConfirmingVerificationTest : BehaviorSpec({
         val confirmingVerification = prepareConfirmingVerification(request)
         When("사용자가 입력하면") {
             then("해당하는 인증이 없음을 알린다") {
-                shouldThrow<NotExistingVerification> { confirmingVerification.execute() }
+                shouldThrow<NotExistingVerificationException> { confirmingVerification.execute() }
             }
         }
     }

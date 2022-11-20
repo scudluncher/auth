@@ -16,7 +16,7 @@ class JwtTokenProviderTest : BehaviorSpec({
         When("토큰을 생성하고, 토큰을 다시 파싱하면") {
             val token = tokenProvider.token(payload)
             then("동일한 값이 보장된다.") {
-            tokenProvider.payload(token) shouldBe payload
+                tokenProvider.payload(token) shouldBe payload
             }
         }
     }

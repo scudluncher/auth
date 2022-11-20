@@ -3,8 +3,6 @@ package com.ragnarok.auth.member.infra.repository
 import com.ragnarok.auth.member.infra.entity.MemberJpaEntity
 import io.kotest.core.spec.Spec
 import io.kotest.core.spec.style.BehaviorSpec
-import io.kotest.core.test.TestCase
-import io.kotest.core.test.TestResult
 import io.kotest.extensions.spring.SpringExtension
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe

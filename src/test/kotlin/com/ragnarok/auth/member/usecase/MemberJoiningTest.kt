@@ -9,7 +9,7 @@ import com.ragnarok.auth.member.exception.AlreadyUsedNickNameException
 import com.ragnarok.auth.member.exception.AlreadyUsedPhoneNumberException
 import com.ragnarok.auth.verification.domain.repository.FakeVerificationRepository
 import com.ragnarok.auth.verification.domain.repository.VerificationRepository
-import com.ragnarok.auth.verification.exception.NotExistingVerification
+import com.ragnarok.auth.verification.exception.NotExistingVerificationException
 import com.ragnarok.auth.verification.exception.OngoingVerificationException
 import com.ragnarok.auth.verification.exception.ValidVerificationTimeOverException
 import io.kotest.assertions.throwables.shouldThrow
@@ -63,7 +63,7 @@ class MemberJoiningTest : BehaviorSpec({
         val memberJoining = prepareMemberJoin(request)
         When("회원 가입하면") {
             then("미인증 상태임을 알린다.") {
-                shouldThrow<NotExistingVerification> { memberJoining.execute() }
+                shouldThrow<NotExistingVerificationException> { memberJoining.execute() }
             }
         }
     }
