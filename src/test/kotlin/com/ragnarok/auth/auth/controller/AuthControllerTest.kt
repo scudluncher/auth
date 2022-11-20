@@ -61,7 +61,6 @@ class AuthControllerTest : ControllerTestExtension, AnnotationSpec() {
             nickName = null,
             email = null
         )
-            .toMemberLoginRequest()
 
         val content = objectMapper.writeValueAsString(request)
 
@@ -109,7 +108,6 @@ class AuthControllerTest : ControllerTestExtension, AnnotationSpec() {
             nickName = null,
             email = null
         )
-            .toMemberLoginRequest()
 
         val content = objectMapper.writeValueAsString(request)
 
@@ -138,7 +136,6 @@ class AuthControllerTest : ControllerTestExtension, AnnotationSpec() {
             nickName = null,
             email = email
         )
-            .toMemberLoginRequest()
 
         val content = objectMapper.writeValueAsString(request)
 
@@ -166,7 +163,6 @@ class AuthControllerTest : ControllerTestExtension, AnnotationSpec() {
             nickName = null,
             email = null
         )
-            .toMemberLoginRequest()
 
         val content = objectMapper.writeValueAsString(request)
 

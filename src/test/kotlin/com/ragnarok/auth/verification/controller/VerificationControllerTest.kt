@@ -149,6 +149,24 @@ class VerificationControllerTest : ControllerTestExtension, AnnotationSpec() {
     }
 
     @Test
+    fun wrongTypePhoneNumber() {
+        val wrongPhoneNumberShape = "010-8976-1234"
+        val request = VerificationRequest(wrongPhoneNumberShape)
+
+        val content = objectMapper.writeValueAsString(request)
+
+         doNothing().`when`(verificationService).generateJoinVerification(any())
+
+        mockMvc.perform(
+            post("/v1/verification/join")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(content)
+                .with(csrf())
+        )
+            .andExpect(status().isBadRequest)
+    }
+
+    @Test
     fun generatingVerificationForResetSuccess() {
         val phoneNumber = "01089761234"
         val request = VerificationRequest(phoneNumber)

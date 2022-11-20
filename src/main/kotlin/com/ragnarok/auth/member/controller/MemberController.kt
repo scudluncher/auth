@@ -25,8 +25,7 @@ class MemberController(private val memberService: MemberService) : Authenticatio
     fun join(@RequestBody @Valid request: JoinRequest): ResponseEntity<SingleResponse<MyInformation>> {
         val member = memberService.join(request.toJoinRequest())
 
-        return ResponseEntity.ok()
-            .body(SingleResponse.Ok(MyInformation(member)))
+        return ResponseEntity(SingleResponse.Ok(MyInformation(member)), HttpStatus.CREATED)
     }
 
     @PatchMapping("/v1/members/password-reset")

@@ -14,27 +14,33 @@ class MemberErrorHandlingAdvice {
     @ExceptionHandler(AlreadyRegisteredMemberException::class)
     fun alreadyRegisteredMember(): ResponseEntity<ErrorResponse> {
         return ResponseEntity.status(HttpStatus.CONFLICT)
-            .body(ErrorResponse(
-                "duplicated_member",
-                "이미 가입된 회원입니다."
-            ))
+            .body(
+                ErrorResponse(
+                    "duplicated_member",
+                    "이미 가입된 회원입니다."
+                )
+            )
     }
 
     @ExceptionHandler(DuplicatedMemberKeyException::class)
     fun alreadyRegisteredMember(e: DuplicatedMemberKeyException): ResponseEntity<ErrorResponse> {
         return ResponseEntity.status(HttpStatus.CONFLICT)
-            .body(ErrorResponse(
-                "not_unique",
-                "이미 사용중인 ${e.type} 입니다."
-            ))
+            .body(
+                ErrorResponse(
+                    "not_unique",
+                    "이미 사용중인 ${e.type} 입니다."
+                )
+            )
     }
 
     @ExceptionHandler(NoMemberFoundException::class)
     fun noMemberFound(): ResponseEntity<ErrorResponse> {
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
-            .body(ErrorResponse(
-                "not_found_member",
-                "없는 회원입니다."
-            ))
+            .body(
+                ErrorResponse(
+                    "not_found_member",
+                    "없는 회원입니다."
+                )
+            )
     }
 }

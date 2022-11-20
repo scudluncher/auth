@@ -14,11 +14,16 @@ import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
 import org.mockito.kotlin.any
+import org.mockito.kotlin.doNothing
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.stub
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
+import org.springframework.http.MediaType
+import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
@@ -100,7 +105,78 @@ class MemberControllerTest : ControllerTestExtension, AnnotationSpec() {
 
     @Test
     fun joinSuccess() {
+        val email = "scudluncher@gmail.com"
+        val password = "asdfqwer"
+        val name = "myName"
+        val nickName = "myNickName"
+        val phoneNumber = "01089764629"
 
+        val request = com.ragnarok.auth.member.request.JoinRequest(
+            email,
+            password,
+            name,
+            nickName,
+            phoneNumber
+        )
+
+        val content = objectMapper.writeValueAsString(request)
+
+        val expectedMember = Member(
+            33L,
+            Email(email),
+            HashedPassword("wwww", "zxcv"),
+            name,
+            nickName,
+            phoneNumber
+        )
+
+        val expectedResult = objectMapper.writeValueAsString(
+            SingleResponse.Ok(MyInformation(expectedMember))
+        )
+
+        memberService.stub {
+            on { join(any()) } doReturn expectedMember
+        }
+
+        mockMvc.perform(
+            post("/v1/members")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(content)
+                .with(csrf())
+        )
+            .andExpect(status().isCreated)
+            .andExpect(content().json(expectedResult))
+    }
+
+    @Test
+    fun joinFailedDueToWrongArgument() {
+        val email = "scudluncher@gmail.com"
+        val tooShortPassword = "1"
+        val name = "myName"
+        val nickName = "myNickName"
+        val phoneNumber = "01089764629"
+
+        val request = com.ragnarok.auth.member.request.JoinRequest(
+            email,
+            tooShortPassword,
+            name,
+            nickName,
+            phoneNumber
+        )
+
+        val content = objectMapper.writeValueAsString(request)
+
+        memberService.stub {
+            on { join(any()) } doReturn any()
+        }
+
+        mockMvc.perform(
+            post("/v1/members")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(content)
+                .with(csrf())
+        )
+            .andExpect(status().isBadRequest)
     }
 
 
