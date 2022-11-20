@@ -1,8 +1,107 @@
 package com.ragnarok.auth.member.controller
 
-import io.kotest.core.spec.style.FunSpec
-import io.kotest.matchers.shouldBe
+import com.ragnarok.auth.common.infra.controller.ControllerTestExtension
+import com.ragnarok.auth.common.response.ErrorResponse
+import com.ragnarok.auth.common.response.SingleResponse
+import com.ragnarok.auth.member.domain.entity.Member
+import com.ragnarok.auth.member.domain.value.Email
+import com.ragnarok.auth.member.domain.value.HashedPassword
+import com.ragnarok.auth.member.service.MemberService
+import com.ragnarok.auth.member.viewmodel.MyInformation
+import io.kotest.core.spec.Spec
+import io.kotest.core.spec.style.AnnotationSpec
+import org.mockito.InjectMocks
+import org.mockito.Mock
+import org.mockito.MockitoAnnotations
+import org.mockito.kotlin.any
+import org.mockito.kotlin.doReturn
+import org.mockito.kotlin.stub
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
+import org.springframework.test.web.servlet.MockMvc
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
-class MemberControllerTest : FunSpec({
-    TODO()
-})
+@WebMvcTest(MemberController::class)
+class MemberControllerTest : ControllerTestExtension, AnnotationSpec() {
+    @InjectMocks
+    private lateinit var memberController: MemberController
+
+    @Mock
+    private lateinit var memberService: MemberService
+
+    private lateinit var mockMvc: MockMvc
+
+    private val objectMapper = objectMapper()
+
+    override suspend fun beforeSpec(spec: Spec) {
+        MockitoAnnotations.openMocks(this)
+        mockMvc = defaultMockMvcBuilder(memberController)
+            .build()
+    }
+
+    @Test
+    fun getMyInfoSuccess() {
+        val me = Member(
+            130L,
+            Email("scudluncher@gmail.com"),
+            HashedPassword("asdf", "qwer"),
+            "YJ SHIN",
+            "K810 HUNTER",
+            "01089764629"
+        )
+
+        val expectedResponse = objectMapper.writeValueAsString(
+            SingleResponse.Ok(MyInformation(me))
+        )
+
+        memberService.stub {
+            on { me(any()) } doReturn me
+        }
+
+        setSecurityContext()
+
+        mockMvc.perform(
+            get("/v1/members/me")
+                .header("Authorization", "Bearer SOME_ACCESS_TOKEN")
+        )
+            .andExpect(status().isOk)
+            .andExpect(content().json(expectedResponse))
+    }
+
+    @Test
+    fun getMyInfoFailedDueToAuthorization() {
+        val me = Member(
+            130L,
+            Email("scudluncher@gmail.com"),
+            HashedPassword("asdf", "qwer"),
+            "YJ SHIN",
+            "K810 HUNTER",
+            "01089764629"
+        )
+
+        val expectedResponse = objectMapper.writeValueAsString(
+            ErrorResponse(
+                "authorization_fail",
+                "인가 중 문제가 발생했습니다."
+            )
+        )
+
+        memberService.stub {
+            on { me(any()) } doReturn me
+        }
+
+        mockMvc.perform(
+            get("/v1/members/me")
+        )
+            .andExpect(status().isUnauthorized)
+            .andExpect(content().json(expectedResponse))
+    }
+
+    @Test
+    fun joinSuccess() {
+
+    }
+
+
+}

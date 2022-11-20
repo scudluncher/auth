@@ -19,7 +19,7 @@ class MemberJoining(
     private val hashingProvider: HashingProvider,
 ) {
     fun execute(): Member {
-        judgeKeyUsable(request)
+        judgeIdentificationKeyUnique(request)
 
         val verification = verificationRepository.findByPhoneNumberAndType(request.phoneNumber, VerificationType.JOIN)
         verification.checkUsableVerification()
@@ -41,7 +41,7 @@ class MemberJoining(
         )
     }
 
-    private fun judgeKeyUsable(request: JoinRequest) {
+    private fun judgeIdentificationKeyUnique(request: JoinRequest) {
         memberRepository.findByPhoneNumber(request.phoneNumber)
             ?.let {
                 throw AlreadyUsedPhoneNumberException()

@@ -12,7 +12,7 @@ Content-Type: application/json
 
 {
   "phoneNumber": "01089764629",
-  "code": "803730",
+  "code": "150664",
   "verificationType": "JOIN"
 }
 

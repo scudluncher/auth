@@ -20,8 +20,7 @@ class VerificationController(private val verificationService: VerificationServic
     fun generateVerificationForJoin(@RequestBody @Valid request: VerificationRequest): ResponseEntity<SingleResponse<EmptyContent>> {
         verificationService.generateJoinVerification(request.toGenerateRequest())
 
-        return ResponseEntity.ok()
-            .body(SingleResponse.Ok(EmptyContent()))
+        return ResponseEntity(SingleResponse.Ok(EmptyContent()), HttpStatus.CREATED)
     }
 
     @PostMapping("/v1/verification/reset")

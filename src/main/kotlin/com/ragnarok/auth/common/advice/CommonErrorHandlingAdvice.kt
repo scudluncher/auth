@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
 
 @RestControllerAdvice
-class CommonErrorAdvice {
+class CommonErrorHandlingAdvice {
     @ExceptionHandler(RuntimeException::class)
     fun internalServerError(e: RuntimeException): ResponseEntity<ErrorResponse> {
         return ResponseEntity.status(HttpStatus.CONFLICT)
@@ -26,5 +26,4 @@ class CommonErrorAdvice {
                 e.message ?: "잘못된 요청입니다."
             ))
     }
-
 }

@@ -1,3 +1,129 @@
+PATCH http://localhost:8080/v1/verification
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629",
+  "code": "150664",
+  "verificationType": "JOIN"
+}
+
+<> 2022-11-20T043502.200.json
+
+###
+
+PATCH http://localhost:8080/v1/verification
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629",
+  "code": "020278",
+  "verificationType": "JOIN"
+}
+
+<> 2022-11-20T043442.409.json
+
+###
+
+POST http://localhost:8080/v1/verification/join
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629"
+}
+
+<> 2022-11-20T043423.200.json
+
+###
+
+PATCH http://localhost:8080/v1/verification
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629",
+  "code": "020278",
+  "verificationType": "JOIN"
+}
+
+<> 2022-11-20T043406.409.json
+
+###
+
+PATCH http://localhost:8080/v1/verification
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629",
+  "code": "020278",
+  "verificationType": "JOIN"
+}
+
+<> 2022-11-20T043323.409.json
+
+###
+
+PATCH http://localhost:8080/v1/verification
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629",
+  "code": "020278",
+  "verificationType": "JOIN"
+}
+
+<> 2022-11-20T043216.409.json
+
+###
+
+PATCH http://localhost:8080/v1/verification
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629",
+  "code": "020278",
+  "verificationType": "JOIN"
+}
+
+<> 2022-11-20T043206.409.json
+
+###
+
+PATCH http://localhost:8080/v1/verification
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629",
+  "code": "020278",
+  "verificationType": "JOIN"
+}
+
+<> 2022-11-20T043120.409.json
+
+###
+
+PATCH http://localhost:8080/v1/verification
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629",
+  "code": "020278",
+  "verificationType": "JOIN"
+}
+
+<> 2022-11-20T043109.409.json
+
+###
+
+POST http://localhost:8080/v1/verification/join
+Content-Type: application/json
+
+{
+  "phoneNumber": "01089764629"
+}
+
+<> 2022-11-20T043054.200.json
+
+###
+
 POST http://localhost:8080/v1/auth/login
 Content-Type: application/json
 
@@ -464,129 +590,6 @@ Content-Type: application/json
 }
 
 <> 2022-11-19T181246.200.json
-
-###
-
-POST http://localhost:8080/v1/members
-Content-Type: application/json
-
-{
-  "email": "scudluncher@gmail.com",
-  "password": "asdfqwer1234",
-  "name": "YJ SHIN",
-  "nickName": "ragnarok is coming",
-  "phoneNumber": "01089764629"
-}
-
-<> 2022-11-19T181243.200.json
-
-###
-
-PATCH http://localhost:8080/v1/verification
-Content-Type: application/json
-
-{
-  "phoneNumber": "01089764629",
-  "code": "875480",
-  "verificationType": "JOIN"
-}
-
-<> 2022-11-19T181238.200.json
-
-###
-
-POST http://localhost:8080/v1/verification/join
-Content-Type: application/json
-
-{
-  "phoneNumber": "01089764629"
-}
-
-<> 2022-11-19T181226.200.json
-
-###
-
-POST http://localhost:8080/v1/auth/login
-Content-Type: application/json
-
-{
-  "email": "scudluncher@gmail.com",
-  "password": "asdfqwer1234"
-}
-
-<> 2022-11-19T181027.500.json
-
-###
-
-POST http://localhost:8080/v1/members
-Content-Type: application/json
-
-{
-  "email": "scudluncher@gmail.com",
-  "password": "asdfqwer1234",
-  "name": "YJ SHIN",
-  "nickName": "ragnarok is coming",
-  "phoneNumber": "01089764629"
-}
-
-<> 2022-11-19T180822.200.json
-
-###
-
-PATCH http://localhost:8080/v1/verification
-Content-Type: application/json
-
-{
-  "phoneNumber": "01089764629",
-  "code": "330062",
-  "verificationType": "JOIN"
-}
-
-<> 2022-11-19T180817.200.json
-
-###
-
-PATCH http://localhost:8080/v1/verification
-Content-Type: application/json
-
-{
-  "phoneNumber": "01089764629",
-  "code": "475082",
-  "verificationType": "JOIN"
-}
-
-<> 2022-11-19T180802.500.json
-
-###
-
-POST http://localhost:8080/v1/verification/join
-Content-Type: application/json
-
-{
-  "phoneNumber": "01089764629"
-}
-
-<> 2022-11-19T180759.200.json
-
-###
-
-POST http://localhost:8080/v1/verification/join
-Content-Type: application/json
-
-{
-  "phoneNumber": "01089764629"
-}
-
-<> 2022-11-19T180155.200.json
-
-###
-
-POST http://localhost:8080/v1/verification/join
-Content-Type: application/json
-
-{
-  "phoneNumber": "01089764629"
-}
 
 ###
 
