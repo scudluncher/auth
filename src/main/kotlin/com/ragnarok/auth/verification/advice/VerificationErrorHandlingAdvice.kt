@@ -2,12 +2,14 @@ package com.ragnarok.auth.verification.advice
 
 import com.ragnarok.auth.common.response.ErrorResponse
 import com.ragnarok.auth.verification.exception.*
+import org.springframework.core.annotation.Order
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
 
 @RestControllerAdvice
+@Order(1)
 class VerificationErrorHandlingAdvice {
     @ExceptionHandler(OngoingVerificationException::class)
     fun ongoingVerificationExist(): ResponseEntity<ErrorResponse> {

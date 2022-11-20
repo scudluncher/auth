@@ -4,12 +4,14 @@ import com.ragnarok.auth.common.response.ErrorResponse
 import com.ragnarok.auth.member.exception.AlreadyRegisteredMemberException
 import com.ragnarok.auth.member.exception.DuplicatedMemberKeyException
 import com.ragnarok.auth.member.exception.NoMemberFoundException
+import org.springframework.core.annotation.Order
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
 
 @RestControllerAdvice
+@Order(1)
 class MemberErrorHandlingAdvice {
     @ExceptionHandler(AlreadyRegisteredMemberException::class)
     fun alreadyRegisteredMember(): ResponseEntity<ErrorResponse> {

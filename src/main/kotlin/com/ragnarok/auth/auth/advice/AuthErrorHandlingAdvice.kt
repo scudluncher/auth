@@ -4,12 +4,14 @@ import com.ragnarok.auth.auth.exception.AuthenticationFailException
 import com.ragnarok.auth.auth.exception.AuthorizationException
 import com.ragnarok.auth.auth.exception.NotEnoughIdentificationProvidedException
 import com.ragnarok.auth.common.response.ErrorResponse
+import org.springframework.core.annotation.Order
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
 
 @RestControllerAdvice
+@Order(1)
 class AuthErrorHandlingAdvice {
     @ExceptionHandler(AuthenticationFailException::class)
     fun authenticationFail(): ResponseEntity<ErrorResponse> {

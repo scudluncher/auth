@@ -2,6 +2,8 @@ package com.ragnarok.auth.common.advice
 
 import com.ragnarok.auth.common.exception.BadRequestException
 import com.ragnarok.auth.common.response.ErrorResponse
+import org.springframework.core.Ordered
+import org.springframework.core.annotation.Order
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.MethodArgumentNotValidException
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
 
 @RestControllerAdvice
+@Order(Ordered.LOWEST_PRECEDENCE)
 class CommonErrorHandlingAdvice {
     @ExceptionHandler(RuntimeException::class)
     fun internalServerError(e: RuntimeException): ResponseEntity<ErrorResponse> {

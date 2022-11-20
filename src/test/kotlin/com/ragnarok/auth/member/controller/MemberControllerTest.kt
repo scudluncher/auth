@@ -285,7 +285,6 @@ class MemberControllerTest : ControllerTestExtension, AnnotationSpec() {
     fun ongoingVerificationForJoinFound() {
         val content = objectMapper.writeValueAsString(joinRequest())
 
-        val expiredTime = LocalDateTime.now().plusMinutes(3)
         val expectedErrorResponse = objectMapper.writeValueAsString(
             ErrorResponse(
                 "verification_ongoing",

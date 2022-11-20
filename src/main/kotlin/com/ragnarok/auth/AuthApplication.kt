@@ -43,8 +43,9 @@ class SecurityConfig {
     @Bean
     fun filterChain(httpSecurity: HttpSecurity): SecurityFilterChain {
         httpSecurity.httpBasic().disable()
-        httpSecurity.headers().frameOptions().disable() // h2 console 접속 용도
-        httpSecurity.csrf().disable()
+            .csrf().disable()
+            .headers().frameOptions().disable() // h2 console 접속 용도
+
         return httpSecurity.build()
     }
 }
