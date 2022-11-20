@@ -12,7 +12,7 @@ Content-Type: application/json
 
 {
   "phoneNumber": "01089764629",
-  "code": "514644",
+  "code": "",
   "verificationType": "JOIN"
 }
 
@@ -61,7 +61,7 @@ Content-Type: application/json
 
 {
   "phoneNumber": "01089764629",
-  "code": "330733",
+  "code": "",
   "verificationType": "RESET"
 }
 
