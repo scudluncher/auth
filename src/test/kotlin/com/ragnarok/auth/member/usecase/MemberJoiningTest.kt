@@ -115,11 +115,11 @@ class MemberJoiningTest : BehaviorSpec({
     }
 
     given("중복된 전화번호로 가입정보를 제출하고") {
-        val email = "cretos@again.com"
+        val email = "kratos@again.com"
         val phoneNumber = "01011111111"
         val password = "378jf33222333"
-        val name = "cretos duplicated"
-        val nickName = "poor cretos"
+        val name = "kratos duplicated"
+        val nickName = "poor kratos"
 
         val request = JoinRequest(
             email,
@@ -137,11 +137,11 @@ class MemberJoiningTest : BehaviorSpec({
     }
 
     given("중복된 이메일로 가입정보를 제출하고") {
-        val email = "cretos@olympus.com"
+        val email = "kratos@olympus.com"
         val phoneNumber = "01078783434"
         val password = "378jf33222333"
-        val name = "cretos duplicated"
-        val nickName = "poor cretos"
+        val name = "kratos duplicated"
+        val nickName = "poor kratos"
 
         val request = JoinRequest(
             email,
@@ -159,10 +159,10 @@ class MemberJoiningTest : BehaviorSpec({
     }
 
     given("중복된 별명으로 가입정보를 제출하고") {
-        val email = "cretos@egypt.com"
+        val email = "kratos@egypt.com"
         val phoneNumber = "01078783434"
         val password = "378jf33222333"
-        val name = "cretos duplicated"
+        val name = "kratos duplicated"
         val nickName = "Son Of Zeus"
 
         val request = JoinRequest(

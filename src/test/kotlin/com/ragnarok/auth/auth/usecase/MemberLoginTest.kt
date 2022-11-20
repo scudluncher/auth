@@ -31,7 +31,7 @@ class MemberLoginTest : BehaviorSpec({
 
     given("식별가능한 정보 복수개를(generated ID, 이메일, 전화번호, 별명)와 올바른 비밀번호를 이용하여") {
         val phoneNumber = "01011111111"
-        val email = Email("cretos@olympus.com")
+        val email = Email("kratos@olympus.com")
         val password = "qwer"
 
         val request = MemberLoginRequest(

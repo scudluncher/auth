@@ -63,7 +63,7 @@ class FakeVerificationRepository : VerificationRepository {
             verificationExpiredTime = LocalDateTime.now().plusMinutes(TimeLimit.VALID_VERIFICATION_EXPIRED),
             verified = true
         ),
-        // cretos : 비밀번호 리셋 진행중, 인증코드 미제출 상태
+        // kratos : 비밀번호 리셋 진행중, 인증코드 미제출 상태
         Verification(
             id = 3,
             phoneNumber = "01011111111",

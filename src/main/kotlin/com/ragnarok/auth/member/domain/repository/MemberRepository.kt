@@ -53,9 +53,9 @@ class FakeMemberRepository : MemberRepository {
     private val members: MutableList<Member> = mutableListOf(
         Member(
             id = 1,
-            email = Email("cretos@olympus.com"),
+            email = Email("kratos@olympus.com"),
             password = HashedPassword("asdfqwer", "asdf"),
-            name = "Cretos",
+            name = "kratos",
             nickName = "Son Of Zeus",
             phoneNumber = "01011111111"
         ),
