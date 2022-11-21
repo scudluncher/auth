@@ -1,5 +1,14 @@
 # Simple Verified Member
 
+## 사용 기술
+* Language: Kotlin 1.6
+* target JDK: JDK 17
+* SpringBoot MVC
+* H2 database(회원정보), redis(인증정보)
+* Spring Data JPA, Spring Data Redis
+* kotest, mockkito
+* JWT
+
 ## 실행 방법
 * docker로 구동하는 redis 필요
 ```
@@ -19,15 +28,6 @@ docker-compose -f docker-compose.redis.yml up -d
 docker exec -it docker-redis redis-cli
 redis-cli FLUSHALL
 ```
-
-## 사용 기술
-* Language: Kotlin 1.6
-* target JDK: JDK 17
-* SpringBoot MVC
-* H2 database(회원정보), redis(인증정보)
-* Spring Data JPA, Spring Data Redis
-* kotest, mockkito
-* JWT
 
 ## Happy path 구동
 * happypath.http 참조 
