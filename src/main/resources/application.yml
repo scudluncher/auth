@@ -22,10 +22,6 @@ spring:
   h2:
     console:
       enabled: true
-  thymeleaf:
-    prefix: classpath:/template/
-    suffix: .html
-    cache: false
 logging:
   level:
     org:
